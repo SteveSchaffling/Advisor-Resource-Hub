@@ -593,8 +593,50 @@
             bsRequirements: 'MAT 295+296 (C average), ECN 311/302/505/521/522',
             baRequirements: 'MAT 284 (C or higher), ECN 301/302/422',
             advice: 'If B.S. student gets below C in MAT 295, encourage switch to B.A.',
-            contact: 'economics@syr.edu',
-            searchText: 'economics ECN business finance math MAT 295 MAT 296 MAT 284 ECN 311 ECN 302 ECN 505 ECN 521 ECN 522 ECN 301 ECN 422 BA BS bachelor'
+            timing: 'Complete ECN 101, ECN 102, math by end of sophomore year',
+            lacCourses: 'ECN 304 counts as IDEA and Critical Reflections',
+            contact: 'economics@syr.edu, Molly Cavanaugh mmcavana@syr.edu',
+            searchText: 'economics ECN business finance math MAT 295 MAT 296 MAT 284 ECN 311 ECN 302 ECN 505 ECN 521 ECN 522 ECN 301 ECN 422 BA BS bachelor ECN 101 ECN 102 ECN 304'
+        });
+
+        resources.push({
+            type: 'major',
+            category: 'Major Cheat Sheet',
+            title: 'Biology',
+            declaration: 'No requirements',
+            degreeTypes: 'B.A. and B.S. available',
+            bsRequirements: 'Organic Chem AND calc/stats, 18 upper div (6 lab), concentration required',
+            baRequirements: 'Organic Chem OR calc/stats, 9 upper div (3 lab)',
+            timing: 'Complete BIO 322/323/324 by end of sophomore year',
+            fallOnly: 'BIO 121/122, BIO 322, CHE 106/107, CHE 275/276',
+            springOnly: 'BIO 123, BIO 224, BIO 323, BIO 324, CHE 116/117',
+            contact: 'biology@syr.edu',
+            searchText: 'biology BIO life sciences BS BA bachelor science arts organic chemistry calculus statistics concentration upper division lab BIO 121 BIO 122 BIO 123 BIO 224 BIO 322 BIO 323 BIO 324 CHE 106 CHE 116 CHE 275 fall spring semester'
+        });
+
+        resources.push({
+            type: 'major',
+            category: 'Major Cheat Sheet',
+            title: 'Undecided Students',
+            categories: 'Unsure what to declare, Needing to change major, Academically unsuccessful',
+            resources: 'Strong Interest Inventory, Career Roadmaps, Alumni Connections, What Can I Do With This Major',
+            deadline: 'Must declare by 60 credits; warnings/holds at 45 credits; TAP students risk losing aid',
+            advice: 'Encourage exploration through core, discuss liberal arts benefits, emphasize flexibility, do not apply pressure',
+            iutResources: 'Links for Education, Engineering/CS, Falk, iSchool, Newhouse, VPA, Whitman',
+            advisors: 'Scott Freeney, Frances Odom',
+            searchText: 'undecided exploratory unsure choosing major declaration deadline 60 credits 45 credits TAP financial aid exploration career roadmaps strong interest inventory alumni connections Scott Freeney Frances Odom IUT transfer'
+        });
+
+        resources.push({
+            type: 'major',
+            category: 'Major Cheat Sheet',
+            title: 'Law, Society and Policy ILM',
+            declaration: 'Must gain Program Director approval',
+            degreeTypes: 'B.A. only with base major required',
+            keyCourses: 'LLA 201 and PST 101 important courses',
+            internship: '3-credit internship required (LSP 370 or base major)',
+            contact: 'Gretchen Purser, Yuksel Sezgin, Candy Brooks, Hava Karakas Keles',
+            searchText: 'law society policy ILM interdisciplinary liberal major LSP LLA PST 101 LLA 201 LSP 370 internship program director approval base major Gretchen Purser Yuksel Sezgin Candy Brooks'
         });
 
         // LIBERAL ARTS CORE (12 resources)
@@ -955,6 +997,16 @@
                 if (resource.bsRequirements) content += '<div class="result-row"><span class="result-label">B.S. Requirements:</span> <span class="result-value">' + resource.bsRequirements + '</span></div>';
                 if (resource.baRequirements) content += '<div class="result-row"><span class="result-label">B.A. Requirements:</span> <span class="result-value">' + resource.baRequirements + '</span></div>';
                 if (resource.timing) content += '<div class="result-row"><span class="result-label">Key Timing:</span> <span class="result-value">' + resource.timing + '</span></div>';
+                if (resource.fallOnly) content += '<div class="result-row"><span class="result-label">Fall Only Courses:</span> <span class="result-value">' + resource.fallOnly + '</span></div>';
+                if (resource.springOnly) content += '<div class="result-row"><span class="result-label">Spring Only Courses:</span> <span class="result-value">' + resource.springOnly + '</span></div>';
+                if (resource.lacCourses) content += '<div class="result-row"><span class="result-label">LAC Courses:</span> <span class="result-value">' + resource.lacCourses + '</span></div>';
+                if (resource.categories) content += '<div class="result-row"><span class="result-label">Categories:</span> <span class="result-value">' + resource.categories + '</span></div>';
+                if (resource.resources) content += '<div class="result-row"><span class="result-label">Resources:</span> <span class="result-value">' + resource.resources + '</span></div>';
+                if (resource.deadline) content += '<div class="result-row"><span class="result-label">Deadline:</span> <span class="result-value">' + resource.deadline + '</span></div>';
+                if (resource.keyCourses) content += '<div class="result-row"><span class="result-label">Key Courses:</span> <span class="result-value">' + resource.keyCourses + '</span></div>';
+                if (resource.internship) content += '<div class="result-row"><span class="result-label">Internship:</span> <span class="result-value">' + resource.internship + '</span></div>';
+                if (resource.iutResources) content += '<div class="result-row"><span class="result-label">IUT Resources:</span> <span class="result-value">' + resource.iutResources + '</span></div>';
+                if (resource.advisors) content += '<div class="result-row"><span class="result-label">Advisors:</span> <span class="result-value">' + resource.advisors + '</span></div>';
                 if (resource.advice) content += '<div class="result-row"><span class="result-label">Advisor Tip:</span> <span class="result-value">' + resource.advice + '</span></div>';
                 if (resource.issues) content += '<div class="result-row"><span class="result-label">Common Issues:</span> <span class="result-value">' + resource.issues + '</span></div>';
                 if (resource.contact) content += '<div class="result-row" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;"><span class="result-label">Contact:</span> <span class="result-value">' + resource.contact + '</span></div>';
