@@ -4,311 +4,522 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAS|MAX Advisor Resource Hub</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #fff5f0 0%, #e0f2fe 100%);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #ea580c 0%, #1d4ed8 100%);
+            color: white;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            color: #fed7aa;
+            font-size: 1rem;
+        }
+        
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .search-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .search-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-header svg {
+            color: #ea580c;
+        }
+        
+        .search-header h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        #searchInput:focus {
+            outline: none;
+            border-color: #ea580c;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover {
+            transform: translateY(-1px);
+        }
+        
+        .filter-btn.active {
+            background-color: #ea580c;
+            color: white;
+        }
+        
+        .filter-btn.inactive {
+            background-color: #e5e7eb;
+            color: #374151;
+        }
+        
+        #resultsCount {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+        
+        #results {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .result-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .result-card:hover {
+            border-color: #fb923c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+        
+        .result-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+        
+        .result-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .badge-career {
+            background-color: #f3e8ff;
+            color: #7c3aed;
+        }
+        
+        .badge-major {
+            background-color: #dbeafe;
+            color: #2563eb;
+        }
+        
+        .badge-plan {
+            background-color: #d1fae5;
+            color: #059669;
+        }
+        
+        .result-content {
+            font-size: 0.875rem;
+        }
+        
+        .result-row {
+            margin-bottom: 0.75rem;
+        }
+        
+        .result-label {
+            font-weight: 600;
+            color: #374151;
+        }
+        
+        .result-value {
+            color: #6b7280;
+        }
+        
+        .result-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #ea580c;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .result-link:hover {
+            text-decoration: underline;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-number.orange {
+            color: #ea580c;
+        }
+        
+        .stat-number.blue {
+            color: #2563eb;
+        }
+        
+        .stat-title {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-desc {
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #9ca3af;
+        }
+        
+        .empty-state svg {
+            margin: 0 auto 1rem auto;
+            opacity: 0.5;
+        }
+        
+        .empty-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .empty-desc {
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .search-card {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="root"></div>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <h1>CAS|MAX Advisor Resource Hub</h1>
+            <p>Searchable Resource Database for Academic Advisors</p>
+        </div>
+    </div>
 
-    <script type="text/babel">
-        const { useState } = React;
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Search Section -->
+        <div class="search-card">
+            <div class="search-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <h2>Search Resources</h2>
+            </div>
+            
+            <!-- Search Input -->
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search by major, career, course code, keyword..."
+            />
 
-        // Lucide React icons as inline SVG components
-        const Search = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="m21 21-4.35-4.35"></path>
-            </svg>
-        );
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button onclick="filterCategory('all')" class="filter-btn active" data-category="all">
+                    All Resources
+                </button>
+                <button onclick="filterCategory('career')" class="filter-btn inactive" data-category="career">
+                    Career Roadmaps
+                </button>
+                <button onclick="filterCategory('major')" class="filter-btn inactive" data-category="major">
+                    Major Cheat Sheets
+                </button>
+                <button onclick="filterCategory('plan')" class="filter-btn inactive" data-category="plan">
+                    Academic Plans
+                </button>
+            </div>
 
-        const Map = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
-                <line x1="9" y1="3" x2="9" y2="18"></line>
-                <line x1="15" y1="6" x2="15" y2="21"></line>
-            </svg>
-        );
+            <!-- Results Count -->
+            <div id="resultsCount"></div>
 
-        const GraduationCap = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-            </svg>
-        );
+            <!-- Results Container -->
+            <div id="results"></div>
+        </div>
 
-        const FileText = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-            </svg>
-        );
+        <!-- Quick Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number orange">16</div>
+                <div class="stat-title">Career Roadmaps</div>
+                <div class="stat-desc">Comprehensive career pathways</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number blue">3</div>
+                <div class="stat-title">Major Cheat Sheets</div>
+                <div class="stat-desc">Quick reference guides</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number orange">57+</div>
+                <div class="stat-title">Academic Plans</div>
+                <div class="stat-desc">Four-year course plans</div>
+            </div>
+        </div>
+    </div>
 
-        const Loader = () => (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="animate-spin">
-                <line x1="12" y1="2" x2="12" y2="6"></line>
-                <line x1="12" y1="18" x2="12" y2="22"></line>
-                <line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line>
-                <line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line>
-                <line x1="2" y1="12" x2="6" y2="12"></line>
-                <line x1="18" y1="12" x2="22" y2="12"></line>
-                <line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line>
-                <line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
-            </svg>
-        );
+    <script>
+        // Resource Database
+        const resources = [
+            // CAREER ROADMAPS
+            {
+                type: 'career',
+                category: 'Career Roadmap',
+                title: 'Business Management and Administration',
+                subsectors: ['Administrative Support', 'General Management', 'Operations Management', 'Business Information Management', 'Human Resources Management'],
+                majors: ['Applied Math', 'Economics', 'International Relations', 'Policy Studies', 'Psychology', 'Sociology'],
+                courses: ['ACC 252', 'BPS 472', 'ECN 365', 'ECN 373', 'ECN 451', 'EEE 370'],
+                experiential: ['Blackstone Launchpad', 'Winston Fisher Seminar', 'Corporate Rotation Programs'],
+                jobs: ['Account Executive', 'Business Analyst', 'HR Specialist', 'Operations Manager', 'Project Manager'],
+                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/business-management-and-administration/',
+                searchText: 'business management administration administrative support general management operations human resources applied math economics international relations policy psychology sociology ACC 252 BPS 472 ECN 365 ECN 373 ECN 451 EEE 370 account executive analyst hr specialist operations manager project manager'
+            },
+            {
+                type: 'career',
+                category: 'Career Roadmap',
+                title: 'Law, Public Safety, Corrections, and Security',
+                subsectors: ['Correction Services', 'Law Enforcement Services', 'Legal Services', 'Security and Protective Services'],
+                majors: ['Anthropology', 'Economics', 'International Relations', 'Philosophy', 'Policy Studies', 'Political Science', 'Psychology', 'Sociology'],
+                courses: ['ANT 185', 'ANT 273', 'HST 210', 'PAI 735', 'PAF 101', 'PHI 191', 'PHI 293', 'PHI 297', 'PSC 124', 'PSC 125'],
+                experiential: ['Pre-Law Advising', 'Mock Trial', 'Legal aid internships'],
+                jobs: ['Legal Assistant', 'Paralegal', 'Court Reporter', 'Police Officer', 'Corrections Officer'],
+                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/law-public-safety-corrections-security/',
+                searchText: 'law public safety corrections security legal enforcement paralegal anthropology economics international relations philosophy policy political science psychology sociology ANT 185 ANT 273 HST 210 PAI 735 PAF 101 PHI 191 PHI 293 PHI 297 PSC 124 PSC 125 legal assistant court reporter police officer'
+            },
+            
+            // MAJOR CHEAT SHEETS
+            {
+                type: 'major',
+                category: 'Major Cheat Sheet',
+                title: 'Political Science',
+                declaration: 'One PSC course with C- or higher',
+                degreeTypes: 'B.A. only (no B.S.)',
+                requirements: 'PSC 121 early, PSC 202 sophomore year, PSC 202 counts as quantitative',
+                issues: 'Must declare cluster/concentration to unlock courses in DegreeWorks',
+                contact: 'Candy Brooks - cbrook01@syr.edu / 315.443.2238',
+                searchText: 'political science PSC government policy PSC 121 PSC 202 BA bachelor arts cluster concentration degreeworks candy brooks'
+            },
+            {
+                type: 'major',
+                category: 'Major Cheat Sheet',
+                title: 'Psychology',
+                declaration: 'No requirements',
+                degreeTypes: 'B.A. and B.S. available',
+                bsRequirements: '30 PSY credits (30 upper division Fall 23+), Statistics sequence, Lab Lecture Sequence (6 cr), Natural Science (8 cr)',
+                baRequirements: '30 PSY credits (18 upper division), Statistics sequence, Advanced Elective',
+                timing: 'Complete PSY 213 by end of sophomore year',
+                contact: 'Jennifer Bragg - Psyundergrad@syr.edu',
+                searchText: 'psychology PSY mental health behavior BA BS bachelor science arts statistics PSY 213 lab natural science jennifer bragg'
+            },
+            {
+                type: 'major',
+                category: 'Major Cheat Sheet',
+                title: 'Economics',
+                declaration: 'No requirements',
+                degreeTypes: 'B.A. and B.S. available',
+                bsRequirements: 'MAT 295+296 (C average), ECN 311/302/505/521/522',
+                baRequirements: 'MAT 284 (C or higher), ECN 301/302/422',
+                advice: 'If B.S. student gets below C in MAT 295, encourage switch to B.A.',
+                contact: 'economics@syr.edu',
+                searchText: 'economics ECN business finance math MAT 295 MAT 296 MAT 284 ECN 311 ECN 302 ECN 505 ECN 521 ECN 522 ECN 301 ECN 422 BA BS bachelor'
+            }
+        ];
 
-        const AdvisorResourceHub = () => {
-            const [query, setQuery] = useState('');
-            const [response, setResponse] = useState('');
-            const [loading, setLoading] = useState(false);
+        let currentFilter = 'all';
 
-            const buildContext = () => {
-                return `
-CAREER ROADMAPS:
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            displayResults(resources);
+            document.getElementById('searchInput').addEventListener('input', performSearch);
+        });
 
-Business Management and Administration:
-- Subsectors: Administrative Support, General Management, Operations Management, Business Information Management, Human Resources Management
-- Relevant Majors: Applied Math, Economics, International Relations, Policy Studies, Psychology, Sociology
-- Key Courses: ACC 252, BPS 472, ECN 365, ECN 373, ECN 451, EEE 370
-- Experiential Learning: Blackstone Launchpad, Winston Fisher Seminar, Corporate Rotation Programs
-- Job Titles: Account Executive, Business Analyst, HR Specialist, Operations Manager, Project Manager
-- URL: https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/business-management-and-administration/
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            let filtered = resources;
+            
+            // Apply category filter
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(r => r.type === currentFilter);
+            }
+            
+            // Apply search filter
+            if (searchTerm) {
+                filtered = filtered.filter(r => r.searchText.toLowerCase().includes(searchTerm));
+            }
+            
+            displayResults(filtered, searchTerm);
+        }
 
-Law, Public Safety, Corrections, and Security:
-- Subsectors: Correction Services, Law Enforcement Services, Legal Services, Security and Protective Services
-- Relevant Majors: Anthropology, Economics, International Relations, Philosophy, Policy Studies, Political Science, Psychology, Sociology
-- Key Courses: ANT 185, ANT 273, HST 210, PAI 735, PAF 101, PHI 191, PHI 293, PHI 297, PSC 124, PSC 125
-- Experiential Learning: Pre-Law Advising, Mock Trial, Internships with legal aid organizations
-- Job Titles: Legal Assistant, Paralegal, Court Reporter, Police Officer, Corrections Officer
-- URL: https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/law-public-safety-corrections-security/
-
-MAJOR CHEAT SHEETS:
-
-Political Science:
-- Declaration: One PSC course with C- or higher
-- Degree Types: B.A. only (no B.S.)
-- Key Requirements: PSC 121 early, PSC 202 sophomore year, PSC 202 counts as quantitative
-- Common Issues: Must declare cluster/concentration to unlock courses in DegreeWorks
-- Contact: Candy Brooks - cbrook01@syr.edu / 315.443.2238
-
-Psychology:
-- Declaration: No requirements
-- Degree Types: B.A. and B.S. available
-- B.S. Requirements: 30 PSY credits (30 upper division Fall 23+), Statistics sequence, Lab Lecture Sequence (6 cr), Natural Science (8 cr)
-- B.A. Requirements: 30 PSY credits (18 upper division), Statistics sequence, Advanced Elective
-- Key Timing: Complete PSY 213 by end of sophomore year
-- Contact: Jennifer Bragg - Psyundergrad@syr.edu
-
-Economics:
-- Declaration: No requirements
-- Degree Types: B.A. and B.S. available
-- B.S. Requirements: MAT 295+296 (C average), ECN 311/302/505/521/522
-- B.A. Requirements: MAT 284 (C or higher), ECN 301/302/422
-- Key Advice: If B.S. student gets below C in MAT 295, encourage switch to B.A.
-- Contact: economics@syr.edu
-`;
-            };
-
-            const handleSearch = async () => {
-                if (!query.trim()) return;
-                
-                setLoading(true);
-                setResponse('');
-
-                try {
-                    const context = buildContext();
-                    
-                    const res = await fetch("https://api.anthropic.com/v1/messages", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({
-                            model: "claude-sonnet-4-20250514",
-                            max_tokens: 2000,
-                            messages: [
-                                {
-                                    role: "user",
-                                    content: `You are an expert academic advisor assistant for Syracuse University's College of Arts & Sciences and Maxwell School. Answer using ONLY the resource bank below.
-
-RESOURCE BANK:
-${context}
-
-ADVISOR QUESTION: ${query}
-
-Provide a clear answer with:
-- Direct response
-- Relevant policies/procedures/requirements
-- Course codes and deadlines when applicable
-- Links when available
-- Contact info if relevant`
-                                }
-                            ]
-                        })
-                    });
-
-                    const data = await res.json();
-                    const answer = data.content.find(c => c.type === 'text')?.text || 'No response generated';
-                    setResponse(answer);
-                } catch (error) {
-                    setResponse('Error: Unable to generate response. Please try again.');
-                } finally {
-                    setLoading(false);
+        function filterCategory(category) {
+            currentFilter = category;
+            
+            // Update button styles
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.category === category) {
+                    btn.classList.remove('inactive');
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                    btn.classList.add('inactive');
                 }
-            };
+            });
+            
+            performSearch();
+        }
 
-            const quickQuestions = [
-                "What are Psychology BS requirements?",
-                "Tell me about Business Management careers",
-                "How do students declare Political Science?",
-                "What's the difference between Economics BA and BS?"
-            ];
-
-            return (
-                <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50">
-                    {/* Header */}
-                    <div className="bg-gradient-to-r from-orange-600 to-blue-700 text-white p-6 shadow-lg">
-                        <div className="max-w-6xl mx-auto">
-                            <h1 className="text-3xl font-bold mb-2">CAS|MAX Advisor Resource Hub</h1>
-                            <p className="text-orange-100">AI-Powered Resource Assistant for Academic Advisors</p>
-                        </div>
+        function displayResults(results, searchTerm = '') {
+            const container = document.getElementById('results');
+            const countEl = document.getElementById('resultsCount');
+            
+            countEl.textContent = `Showing ${results.length} result${results.length !== 1 ? 's' : ''}`;
+            
+            if (results.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <div class="empty-title">No results found</div>
+                        <div class="empty-desc">Try different keywords or filters</div>
                     </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = results.map(r => createResultCard(r)).join('');
+        }
 
-                    {/* Main Content */}
-                    <div className="max-w-6xl mx-auto p-6">
-                        {/* Search Section */}
-                        <div className="bg-white rounded-lg shadow-xl p-8 mb-8">
-                            <div className="flex items-center gap-3 mb-6">
-                                <Search />
-                                <h2 className="text-2xl font-bold text-gray-800">Ask Me Anything</h2>
-                            </div>
-                            
-                            <div className="space-y-4">
-                                <textarea
-                                    value={query}
-                                    onChange={(e) => setQuery(e.target.value)}
-                                    placeholder="Ask about major requirements, career roadmaps, policies, or any advising question..."
-                                    className="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-orange-500 focus:outline-none min-h-24 text-lg"
-                                    onKeyDown={(e) => {
-                                        if (e.key === 'Enter' && !e.shiftKey) {
-                                            e.preventDefault();
-                                            handleSearch();
-                                        }
-                                    }}
-                                />
-                                
-                                <button
-                                    onClick={handleSearch}
-                                    disabled={loading || !query.trim()}
-                                    className="w-full bg-gradient-to-r from-orange-600 to-blue-700 text-white py-4 px-6 rounded-lg font-semibold hover:from-orange-700 hover:to-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 text-lg"
-                                >
-                                    {loading ? (
-                                        <>
-                                            <Loader />
-                                            Searching...
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Search />
-                                            Search Resources
-                                        </>
-                                    )}
-                                </button>
-                            </div>
-
-                            {/* Quick Questions */}
-                            <div className="mt-6">
-                                <p className="text-sm text-gray-600 mb-3 font-semibold">Quick Questions:</p>
-                                <div className="flex flex-wrap gap-2">
-                                    {quickQuestions.map((q, i) => (
-                                        <button
-                                            key={i}
-                                            onClick={() => {
-                                                setQuery(q);
-                                                setResponse('');
-                                            }}
-                                            className="px-4 py-2 bg-gray-100 hover:bg-orange-100 text-gray-700 rounded-full text-sm transition-colors border border-gray-300"
-                                        >
-                                            {q}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Response */}
-                            {response && (
-                                <div className="mt-8 p-6 bg-blue-50 border-l-4 border-blue-600 rounded-lg">
-                                    <div className="prose max-w-none">
-                                        <div className="whitespace-pre-wrap text-gray-800">{response}</div>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Resource Categories */}
-                        <div className="grid md:grid-cols-3 gap-6 mb-8">
-                            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <Map />
-                                    <h3 className="text-xl font-bold text-gray-800">Career Roadmaps</h3>
-                                </div>
-                                <p className="text-gray-600">16 comprehensive career pathways with majors, courses, and experiential opportunities</p>
-                                <div className="mt-4 text-sm text-orange-600 font-semibold">2 loaded in prototype</div>
-                            </div>
-
-                            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <GraduationCap />
-                                    <h3 className="text-xl font-bold text-gray-800">Major Cheat Sheets</h3>
-                                </div>
-                                <p className="text-gray-600">Quick reference guides for major requirements, common issues, and contacts</p>
-                                <div className="mt-4 text-sm text-blue-600 font-semibold">3 loaded in prototype</div>
-                            </div>
-
-                            <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <FileText />
-                                    <h3 className="text-xl font-bold text-gray-800">Academic Plans</h3>
-                                </div>
-                                <p className="text-gray-600">57+ four-year plans for all majors with course sequencing</p>
-                                <div className="mt-4 text-sm text-orange-600 font-semibold">Ready to load</div>
-                            </div>
-                        </div>
-
-                        {/* Contact Section */}
-                        <div className="bg-white rounded-lg shadow-lg p-6">
-                            <h3 className="text-xl font-bold text-gray-800 mb-4">Quick Contacts</h3>
-                            <div className="grid md:grid-cols-2 gap-4 text-sm">
-                                <div>
-                                    <p className="font-semibold text-gray-700">Political Science</p>
-                                    <p className="text-gray-600">Candy Brooks - cbrook01@syr.edu</p>
-                                </div>
-                                <div>
-                                    <p className="font-semibold text-gray-700">Psychology</p>
-                                    <p className="text-gray-600">Psyundergrad@syr.edu</p>
-                                </div>
-                                <div>
-                                    <p className="font-semibold text-gray-700">Economics</p>
-                                    <p className="text-gray-600">economics@syr.edu</p>
-                                </div>
-                            </div>
-                        </div>
+        function createResultCard(resource) {
+            const badgeClass = resource.type === 'career' ? 'badge-career' : 
+                              resource.type === 'major' ? 'badge-major' : 'badge-plan';
+            
+            let content = `
+                <div class="result-card">
+                    <div class="result-header">
+                        <div class="result-title">${resource.title}</div>
+                        <span class="result-badge ${badgeClass}">${resource.category}</span>
                     </div>
-                </div>
-            );
-        };
-
-        ReactDOM.render(<AdvisorResourceHub />, document.getElementById('root'));
+                    <div class="result-content">
+            `;
+            
+            if (resource.type === 'career') {
+                if (resource.subsectors) content += `<div class="result-row"><span class="result-label">Subsectors:</span> <span class="result-value">${resource.subsectors.join(', ')}</span></div>`;
+                if (resource.majors) content += `<div class="result-row"><span class="result-label">Relevant Majors:</span> <span class="result-value">${resource.majors.join(', ')}</span></div>`;
+                if (resource.courses) content += `<div class="result-row"><span class="result-label">Key Courses:</span> <span class="result-value">${resource.courses.join(', ')}</span></div>`;
+                if (resource.experiential) content += `<div class="result-row"><span class="result-label">Experiential Learning:</span> <span class="result-value">${resource.experiential.join(', ')}</span></div>`;
+                if (resource.jobs) content += `<div class="result-row"><span class="result-label">Sample Jobs:</span> <span class="result-value">${resource.jobs.join(', ')}</span></div>`;
+                if (resource.url) content += `<a href="${resource.url}" target="_blank" class="result-link">View Full Roadmap →</a>`;
+            } else if (resource.type === 'major') {
+                if (resource.declaration) content += `<div class="result-row"><span class="result-label">Declaration:</span> <span class="result-value">${resource.declaration}</span></div>`;
+                if (resource.degreeTypes) content += `<div class="result-row"><span class="result-label">Degree Types:</span> <span class="result-value">${resource.degreeTypes}</span></div>`;
+                if (resource.requirements) content += `<div class="result-row"><span class="result-label">Key Requirements:</span> <span class="result-value">${resource.requirements}</span></div>`;
+                if (resource.bsRequirements) content += `<div class="result-row"><span class="result-label">B.S. Requirements:</span> <span class="result-value">${resource.bsRequirements}</span></div>`;
+                if (resource.baRequirements) content += `<div class="result-row"><span class="result-label">B.A. Requirements:</span> <span class="result-value">${resource.baRequirements}</span></div>`;
+                if (resource.timing) content += `<div class="result-row"><span class="result-label">Key Timing:</span> <span class="result-value">${resource.timing}</span></div>`;
+                if (resource.advice) content += `<div class="result-row"><span class="result-label">Advisor Tip:</span> <span class="result-value">${resource.advice}</span></div>`;
+                if (resource.issues) content += `<div class="result-row"><span class="result-label">Common Issues:</span> <span class="result-value">${resource.issues}</span></div>`;
+                if (resource.contact) content += `<div class="result-row" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;"><span class="result-label">Contact:</span> <span class="result-value">${resource.contact}</span></div>`;
+            }
+            
+            content += `</div></div>`;
+            return content;
+        }
     </script>
 </body>
 </html>
