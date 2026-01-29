@@ -287,7 +287,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <div class="header">
         <div class="header-content">
             <h1>CAS|MAX Advisor Resource Hub</h1>
@@ -295,9 +294,7 @@
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="container">
-        <!-- Search Section -->
         <div class="search-card">
             <div class="search-header">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -307,40 +304,24 @@
                 <h2>Search Resources</h2>
             </div>
             
-            <!-- Search Input -->
             <input 
                 type="text" 
                 id="searchInput" 
                 placeholder="Search by major, career, course code, keyword..."
             />
 
-            <!-- Filter Buttons -->
             <div class="filter-buttons">
-                <button onclick="filterCategory('all')" class="filter-btn active" data-category="all">
-                    All Resources
-                </button>
-                <button onclick="filterCategory('career')" class="filter-btn inactive" data-category="career">
-                    Career Roadmaps
-                </button>
-                <button onclick="filterCategory('major')" class="filter-btn inactive" data-category="major">
-                    Major Cheat Sheets
-                </button>
-                <button onclick="filterCategory('plan')" class="filter-btn inactive" data-category="plan">
-                    Academic Plans
-                </button>
-                <button onclick="filterCategory('lac')" class="filter-btn inactive" data-category="lac">
-                    Liberal Arts Core
-                </button>
+                <button onclick="filterCategory('all')" class="filter-btn active" data-category="all">All Resources</button>
+                <button onclick="filterCategory('career')" class="filter-btn inactive" data-category="career">Career Roadmaps</button>
+                <button onclick="filterCategory('major')" class="filter-btn inactive" data-category="major">Major Cheat Sheets</button>
+                <button onclick="filterCategory('plan')" class="filter-btn inactive" data-category="plan">Academic Plans</button>
+                <button onclick="filterCategory('lac')" class="filter-btn inactive" data-category="lac">Liberal Arts Core</button>
             </div>
 
-            <!-- Results Count -->
             <div id="resultsCount"></div>
-
-            <!-- Results Container -->
             <div id="results"></div>
         </div>
 
-        <!-- Quick Stats -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-number orange">16</div>
@@ -348,519 +329,558 @@
                 <div class="stat-desc">Complete career pathways</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number blue">3</div>
-                <div class="stat-title">Major Cheat Sheets</div>
-                <div class="stat-desc">Quick reference guides</div>
+                <div class="stat-number blue">31</div>
+                <div class="stat-title">Major & LAC Resources</div>
+                <div class="stat-desc">Cheat sheets & requirements</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number orange">28</div>
-                <div class="stat-title">Total Resources</div>
-                <div class="stat-desc">Searchable database</div>
+                <div class="stat-number orange">16</div>
+                <div class="stat-title">Academic Plans</div>
+                <div class="stat-desc">Four-year course plans</div>
             </div>
         </div>
     </div>
 
     <script>
-        // Resource Database
-        const resources = [
-            // CAREER ROADMAPS
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Business Management and Administration',
-                subsectors: ['Administrative Support', 'General Management', 'Operations Management', 'Business Information Management', 'Human Resources Management'],
-                majors: ['Applied Math', 'Economics', 'International Relations', 'Policy Studies', 'Psychology', 'Sociology'],
-                courses: ['ACC 252', 'BPS 472', 'ECN 365', 'ECN 373', 'ECN 451', 'EEE 370'],
-                experiential: ['Blackstone Launchpad', 'Winston Fisher Seminar', 'Corporate Rotation Programs'],
-                jobs: ['Account Executive', 'Business Analyst', 'HR Specialist', 'Operations Manager', 'Project Manager'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/business-management-and-administration/',
-                searchText: 'business management administration administrative support general management operations human resources applied math economics international relations policy psychology sociology ACC 252 BPS 472 ECN 365 ECN 373 ECN 451 EEE 370 account executive analyst hr specialist operations manager project manager'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Law, Public Safety, Corrections, and Security',
-                subsectors: ['Correction Services', 'Law Enforcement Services', 'Legal Services', 'Security and Protective Services'],
-                majors: ['Anthropology', 'Economics', 'International Relations', 'Philosophy', 'Policy Studies', 'Political Science', 'Psychology', 'Sociology'],
-                courses: ['ANT 185', 'ANT 273', 'HST 210', 'PAI 735', 'PAF 101', 'PHI 191', 'PHI 293', 'PHI 297', 'PSC 124', 'PSC 125'],
-                experiential: ['Pre-Law Advising', 'Mock Trial', 'Legal aid internships'],
-                jobs: ['Legal Assistant', 'Paralegal', 'Court Reporter', 'Police Officer', 'Corrections Officer'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/law-public-safety-corrections-security/',
-                searchText: 'law public safety corrections security legal enforcement paralegal anthropology economics international relations philosophy policy political science psychology sociology ANT 185 ANT 273 HST 210 PAI 735 PAF 101 PHI 191 PHI 293 PHI 297 PSC 124 PSC 125 legal assistant court reporter police officer'
-            },
-            
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Arts, AV Technology, and Communication',
-                subsectors: ['AV Technology', 'Journalism & Broadcasting', 'Performing Arts', 'Printing Technology', 'Telecommunications', 'Visual Arts'],
-                majors: ['African American Studies', 'English', 'Film', 'History of Art', 'Music History', 'Philosophy', 'Religion', 'Women\'s & Gender Studies', 'Writing & Rhetoric'],
-                courses: ['AAS 231', 'ENG 242', 'FIL 221', 'HOA 105/106', 'HOM 125', 'PHI 209', 'REL 120', 'WGS 101', 'WRT 255'],
-                experiential: ['Film festivals', 'Galleries', 'Museums', 'Student publications', 'Syracuse Stage', 'WAER Radio'],
-                jobs: ['Art Director', 'Broadcast Technician', 'Editor', 'Film Editor', 'Multimedia Artist', 'Photographer', 'Technical Writer', 'Video Producer'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/arts-av-technology-and-communication/',
-                searchText: 'arts av technology communication journalism broadcasting performing visual film music art history photography editor multimedia producer writer creative'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Health Science',
-                subsectors: ['Biotechnology Research', 'Diagnostic Services', 'Health Informatics', 'Support Services', 'Therapeutic Services'],
-                majors: ['Anthropology', 'Biology', 'Biotechnology', 'Chemistry', 'Communication Sciences & Disorders', 'Neuroscience', 'Philosophy', 'Psychology', 'Sociology'],
-                courses: ['ANT 273', 'BIO 121/123/224/322', 'BCM 475', 'CHE 106/116', 'CSD 212/315', 'NEU 301', 'PHI 293', 'PSY 335', 'SOC 364'],
-                experiential: ['Barnes Center', 'Community health programs', 'Health humanities', 'Hospital volunteering', 'Lab research', 'Public health internships'],
-                jobs: ['Clinical Research Coordinator', 'Genetic Counselor', 'Healthcare Administrator', 'Medical Lab Technologist', 'Occupational Therapist', 'Public Health Analyst', 'Speech Pathologist'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/health-science/',
-                searchText: 'health science biotechnology diagnostic therapeutic medical healthcare biology chemistry CSD neuroscience psychology public health clinical research genetic counselor therapist'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Marketing',
-                subsectors: ['Management & Entrepreneurship', 'Marketing Communications', 'Marketing Research', 'Merchandising', 'Professional Sales'],
-                majors: ['Economics', 'English', 'Geography', 'International Relations', 'Psychology', 'Sociology', 'Writing & Rhetoric'],
-                courses: ['ECN 311', 'ENG 303', 'GEO 273', 'PSY 335', 'SOC 281', 'WRT 307'],
-                experiential: ['Blackstone Launchpad', 'Marketing internships', 'Social media campaigns', 'Student organizations'],
-                jobs: ['Account Representative', 'Brand Manager', 'Data Analyst', 'Marketing Manager', 'Media Relations', 'Product Manager', 'Social Media Manager'],
-                certifications: ['Digital Marketing', 'Google Analytics', 'HubSpot', 'Professional Certified Marketer'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/marketing/',
-                searchText: 'marketing brand manager social media advertising sales merchandising research communications analytics data product manager account representative digital'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'STEM',
-                subsectors: ['Engineering & Technology', 'Science & Mathematics'],
-                majors: ['Applied Mathematics', 'Biology', 'Biotechnology', 'Chemistry', 'Communication Sciences & Disorders', 'Earth Sciences', 'Mathematics', 'Physics', 'Statistics'],
-                courses: ['BIO courses', 'CHE courses', 'CSD 212', 'EAR 105', 'MAT 295/296', 'PHY 211/212', 'STT courses'],
-                experiential: ['Collaborative research', 'Lab work', 'NSF REU', 'Research internships', 'Shaw Center'],
-                jobs: ['Actuary', 'Biochemist', 'Data Scientist', 'Financial Analyst', 'Research Scientist', 'Software Developer', 'Statistician'],
-                certifications: ['AWS', 'CFA', 'Data Science', 'SAS', 'Tableau'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/stem/',
-                searchText: 'STEM science technology engineering mathematics biology chemistry physics data scientist research actuary biochemist software developer statistician lab'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Government and Public Administration',
-                subsectors: ['Foreign Service', 'Governance', 'National Security', 'Planning', 'Public Management', 'Regulation', 'Revenue & Taxation'],
-                majors: ['Economics', 'Geography', 'History', 'International Relations', 'Philosophy', 'Policy Studies', 'Political Science', 'Sociology'],
-                courses: ['ECN 311', 'GEO 272', 'HST 210', 'PSC 124/125', 'PST 101', 'SOC 318'],
-                experiential: ['Congressional internships', 'Government agencies', 'Maxwell in DC', 'Model UN', 'Public service programs'],
-                jobs: ['City Planner', 'Diplomat', 'Foreign Service Officer', 'Intelligence Analyst', 'Legislative Assistant', 'Policy Analyst', 'Program Coordinator'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/government-and-public-administration/',
-                searchText: 'government public administration policy foreign service national security diplomat intelligence analyst city planner legislative assistant program coordinator regulation'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Finance',
-                subsectors: ['Accounting', 'Banking Services', 'Business Finance', 'Insurance', 'Securities & Investments'],
-                majors: ['Applied Mathematics', 'Economics', 'Mathematics', 'Statistics'],
-                courses: ['ACC 252', 'ECN 311/365/451/465', 'FIN 256/301', 'MAT 295/296', 'STT courses'],
-                experiential: ['Finance club', 'Investment club', 'Stock trading simulations', 'Summer analyst programs', 'Wall Street immersion'],
-                jobs: ['Accountant', 'Actuarial Analyst', 'Credit Analyst', 'Financial Analyst', 'Insurance Underwriter', 'Investment Banker', 'Risk Manager'],
-                certifications: ['CFA', 'CFP', 'CMA', 'CPA', 'FRM'],
-                employers: ['Banks', 'Consulting firms', 'Financial services', 'Insurance companies', 'Investment firms'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/finance/',
-                searchText: 'finance accounting banking investment securities insurance financial analyst accountant actuary credit analyst investment banker risk manager CPA CFA economics'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Human Services',
-                subsectors: ['Consumer Services', 'Counseling & Mental Health', 'Early Childhood Development', 'Family & Community Services', 'Personal Care Services'],
-                majors: ['African American Studies', 'Anthropology', 'Child & Family Studies', 'Psychology', 'Sociology', 'Women\'s & Gender Studies'],
-                courses: ['AAS 231', 'ANT 273', 'HFS 201/202', 'PSY 335/374', 'SOC 364', 'WGS 310'],
-                experiential: ['Community service', 'Mental health awareness', 'Nonprofit internships', 'Social service agencies', 'Volunteer programs'],
-                jobs: ['Case Manager', 'Community Outreach Coordinator', 'Family Advocate', 'Mental Health Counselor', 'Social Worker', 'Youth Program Coordinator'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/human-services/',
-                searchText: 'human services social work counseling mental health community services family services case manager nonprofit youth programs child development psychology sociology'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Hospitality & Tourism',
-                subsectors: ['Lodging', 'Recreation & Attractions', 'Restaurants & Food Services', 'Travel & Tourism'],
-                majors: ['Anthropology', 'Geography', 'History', 'International Relations', 'Languages', 'Sociology'],
-                courses: ['ANT 185', 'GEO 171', 'HST courses', 'Language courses', 'SOC 248'],
-                experiential: ['Event planning', 'Hotel management internships', 'Study abroad', 'Tourism projects', 'Travel industry'],
-                jobs: ['Convention Planner', 'Event Coordinator', 'Hotel Manager', 'Tour Guide', 'Travel Agent'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/hospitality-and-tourism/',
-                searchText: 'hospitality tourism hotel restaurant travel recreation event planning convention tour guide food services lodging attractions international'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Information Technology',
-                subsectors: ['Information Support & Services', 'Network Systems', 'Programming & Software Development', 'Web & Digital Communications'],
-                majors: ['Applied Mathematics', 'Mathematics', 'Physics', 'Statistics'],
-                courses: ['CIS courses', 'CSE 382', 'IST 195/233', 'MAT 495'],
-                experiential: ['Coding bootcamps', 'Hackathons', 'IT internships', 'Software projects', 'Tech startups'],
-                jobs: ['Database Administrator', 'IT Specialist', 'Network Administrator', 'Software Developer', 'Systems Analyst', 'Web Developer'],
-                certifications: ['AWS', 'CompTIA', 'Cisco', 'Microsoft Azure', 'Oracle'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/information-technology/',
-                searchText: 'information technology IT software developer programming web development network systems database administrator cybersecurity coding computer science'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Education and Training',
-                subsectors: ['Administration & Administrative Support', 'Professional Support Services', 'Teaching & Training'],
-                majors: ['All majors', 'Biology', 'Chemistry', 'English', 'History', 'Mathematics', 'Physics', 'Social Sciences'],
-                courses: ['Subject-specific courses', 'Education minors available'],
-                experiential: ['Tutoring', 'Teaching assistantships', 'Education internships', 'Youth programs'],
-                jobs: ['Educational Administrator', 'Instructional Coordinator', 'Teacher', 'Training Specialist', 'Tutor'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/education-and-training/',
-                searchText: 'education training teacher teaching administrator instructional coordinator tutoring youth programs school education policy curriculum'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Manufacturing',
-                subsectors: ['Health Safety & Environmental', 'Logistics & Inventory Control', 'Maintenance & Repair', 'Production', 'Quality Assurance'],
-                majors: ['Applied Mathematics', 'Biology', 'Biotechnology', 'Chemistry', 'Geography', 'Physics'],
-                courses: ['BEN 433', 'BIO 422', 'CHE 335', 'ECN 365', 'GEO 273'],
-                experiential: ['BioInspired Institute', 'Operations management', 'Supply chain internships'],
-                jobs: ['Chemical Analyst', 'Facilities Planner', 'Logistics Analyst', 'Quality Control Technician', 'Supply Chain Manager'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/manufacturing/',
-                searchText: 'manufacturing production quality assurance logistics supply chain operations facilities quality control analyst biotechnology chemistry'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Transportation, Distribution, and Logistics',
-                subsectors: ['Facility & Mobile Equipment Maintenance', 'Logistics Planning', 'Sales & Service', 'Transportation Operations', 'Warehousing'],
-                majors: ['Economics', 'Geography', 'International Relations'],
-                courses: ['ECN 365/367', 'GEO 273', 'MAR 301'],
-                experiential: ['Supply chain internships', 'Global logistics', 'Franklin Center'],
-                jobs: ['Buyer', 'Logistics Analyst', 'Operations Researcher', 'Supply Chain Manager', 'Transportation Manager'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/transportation-distribution-and-logistics/',
-                searchText: 'transportation distribution logistics supply chain buyer operations warehousing shipping freight global trade economics geography'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Architecture and Construction',
-                subsectors: ['Construction', 'Design', 'Maintenance & Operations'],
-                majors: ['Anthropology', 'Applied Mathematics', 'Geography', 'History of Architecture', 'Physics', 'Policy Studies'],
-                courses: ['ANT 414', 'ARC 133/134', 'HOA 105/106', 'PST 367'],
-                experiential: ['Syracuse Abroad Florence/London', 'Historic preservation', 'Urban planning internships'],
-                jobs: ['Cartographer', 'Construction Manager', 'Cost Estimator', 'Interior Designer', 'Urban Planner'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/architecture-and-construction/',
-                searchText: 'architecture construction urban planning design cartographer historic preservation interior design cost estimator building engineering'
-            },
-            {
-                type: 'career',
-                category: 'Career Roadmap',
-                title: 'Agriculture, Food, and Natural Resources',
-                subsectors: ['Agribusiness Systems', 'Animal Systems', 'Environmental Service Systems', 'Food Products & Processing', 'Natural Resource Systems', 'Plant Systems'],
-                majors: ['Biology', 'Biotechnology', 'Chemistry', 'Earth Sciences', 'Geography'],
-                courses: ['BIO 121/123', 'CHE 106', 'EAR 105/210', 'GEO 103/155'],
-                experiential: ['BioInspired Institute', 'Environmental Finance Center', 'ESF partnerships', 'Study abroad'],
-                jobs: ['Agricultural Manager', 'Environmental Scientist', 'Food Scientist', 'Natural Resource Manager', 'Sustainability Specialist'],
-                url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/agriculture-food-and-natural-resources/',
-                searchText: 'agriculture food natural resources environmental sustainability farm agribusiness food science plant biology natural resource manager conservation'
-            }
-            
-            // MAJOR CHEAT SHEETS
-            {
-                type: 'major',
-                category: 'Major Cheat Sheet',
-                title: 'Political Science',
-                declaration: 'One PSC course with C- or higher',
-                degreeTypes: 'B.A. only (no B.S.)',
-                requirements: 'PSC 121 early, PSC 202 sophomore year, PSC 202 counts as quantitative',
-                issues: 'Must declare cluster/concentration to unlock courses in DegreeWorks',
-                contact: 'Candy Brooks - cbrook01@syr.edu / 315.443.2238',
-                searchText: 'political science PSC government policy PSC 121 PSC 202 BA bachelor arts cluster concentration degreeworks candy brooks'
-            },
-            {
-                type: 'major',
-                category: 'Major Cheat Sheet',
-                title: 'Psychology',
-                declaration: 'No requirements',
-                degreeTypes: 'B.A. and B.S. available',
-                bsRequirements: '30 PSY credits (30 upper division Fall 23+), Statistics sequence, Lab Lecture Sequence (6 cr), Natural Science (8 cr)',
-                baRequirements: '30 PSY credits (18 upper division), Statistics sequence, Advanced Elective',
-                timing: 'Complete PSY 213 by end of sophomore year',
-                contact: 'Jennifer Bragg - Psyundergrad@syr.edu',
-                searchText: 'psychology PSY mental health behavior BA BS bachelor science arts statistics PSY 213 lab natural science jennifer bragg'
-            },
-            {
-                type: 'major',
-                category: 'Major Cheat Sheet',
-                title: 'Economics',
-                declaration: 'No requirements',
-                degreeTypes: 'B.A. and B.S. available',
-                bsRequirements: 'MAT 295+296 (C average), ECN 311/302/505/521/522',
-                baRequirements: 'MAT 284 (C or higher), ECN 301/302/422',
-                advice: 'If B.S. student gets below C in MAT 295, encourage switch to B.A.',
-                contact: 'economics@syr.edu',
-                searchText: 'economics ECN business finance math MAT 295 MAT 296 MAT 284 ECN 311 ECN 302 ECN 505 ECN 521 ECN 522 ECN 301 ECN 422 BA BS bachelor'
-            },
-            
-            // LIBERAL ARTS CORE
-            {
-                type: 'lac',
-                category: 'Liberal Arts Core',
-                title: 'Writing Skills Requirement',
-                requirement: '3 courses, 8-10 credits',
-                courses: 'WRT 105 (or WRT 109 Honors, or ENL 211), Writing-Intensive course, WRT 205 (or WRT 209 Honors, or ENL 213)',
-                exemptions: 'AP Lit/Comp 4-5 can register for WRT 205; AP Lang/Comp 4+ exempt from WRT 105/205',
-                searchText: 'writing skills requirement WRT 105 WRT 205 WRT 109 WRT 209 ENL 211 ENL 213 writing intensive AP literature composition exemption'
-            },
-            {
-                type: 'lac',
-                category: 'Liberal Arts Core',
-                title: 'Language Skills Requirement',
-                requirement: '1-3 courses, 4-12 credits',
-                details: 'Complete through course numbered 201',
-                languages: 'ASL, Ancient Greek, Arabic, Chinese, French, German, Hebrew, Hindi/Urdu, Italian, Japanese, Korean, Latin, Portuguese, Russian, Spanish, Turkish',
-                exemptions: 'AP score of 4 in Chinese/Japanese/Latin/Spanish Literature; native speakers can petition; international students can petition',
-                notes: 'Cannot take lower-level after earning grade in higher-level',
-                searchText: 'language skills requirement foreign language 201 ASL greek arabic chinese french german hebrew hindi urdu italian japanese korean latin portuguese russian spanish turkish AP native speaker international exemption petition'
-            },
-            {
-                type: 'lac',
-                category: 'Liberal Arts Core',
-                title: 'Quantitative Skills Requirement',
-                requirement: '2 courses, 6-8 credits (Alternative to Language)',
-                details: 'First Course + different Second Course',
-                firstCourse: 'MAT 121, 183, 193, 194, 221, 285, 295',
-                secondCourse: 'GEO 386, MAT 122, 222, 284, 285, 295, 286, 296, MAX 201, PHP 223, PSC 202, PSY 252, SOC 318, SWK 361',
-                exemptions: 'Calculus 284+ with C or better exempts from second course',
-                notes: 'MAT 284 cannot count for both Quantitative AND Natural Science divisions',
-                searchText: 'quantitative skills requirement math statistics MAT 121 MAT 221 MAT 285 MAT 295 MAT 284 PSC 202 PSY 252 SOC 318 GEO 386 MAX 201 calculus'
-            },
-            {
-                type: 'lac',
-                category: 'Liberal Arts Core',
-                title: 'Humanities Division',
-                requirement: '4 courses, 12 credits',
-                details: '2-course sequence required; No more than 3 courses from single department; No more than 1 course from outside A&S',
-                departments: 'AAS, English, LLL, Art/Music Histories, Philosophy, Religion, WGS, Writing',
-                sequences: 'HOA (any two HOA courses), HOM (any two HOM), ENG (two 100-level or two 200-level or one of each), PHI (any two except 171+172), REL (any REL + any 200+ REL), Language 202+',
-                searchText: 'humanities division requirement english philosophy religion art history music history HOA HOM ENG PHI REL literature languages sequence'
-            },
-            {
-                type: 'lac',
-                category: 'Liberal Arts Core',
-                title: 'Natural Sciences & Mathematics Division',
-                requirement: '4 courses, 12-16 credits',
-                details: 'Must include one lab course; 2-course sequence required',
-                departments: 'Biology, Chemistry, CSD, Earth/Environmental Sciences, Physics, Mathematics',
-                sequences: 'BIO 121(lab 122)-123(lab 124), CHE 106(lab 107)-116(lab 117), PHY 101-102, PHY 211(lab 221)-212(lab 222), MAT 285-286, MAT 295-296, EAR 110-210, GEO 155-215',
-                labNote: 'Lab courses marked with ~ in catalog',
-                searchText: 'natural sciences mathematics division requirement biology chemistry physics math lab BIO CHE PHY MAT EAR GEO CSD laboratory science sequence'
-            },
-            {
-                type: 'lac',
-                category: 'Liberal Arts Core',
-                title: 'Social Sciences Division',
-                requirement: '4 courses, 12 credits',
-                details: '2-course sequence required; No more than 3 courses from single department',
-                departments: 'AAS, Anthropology, Economics, Geography, History, Political Science, Policy Studies, Psychology, Sociology, IR, WGS',
-                sequences: 'ECN 101-102, PSC 121/123/124/125 combinations, ANT 111/121 + 200+, HST 101-102, HST 121-122, GEO combinations, PSY 205/209 + upper level, SOC 101-102, MAX 123-132',
-                searchText: 'social sciences division requirement economics political science psychology sociology anthropology history geography ECN PSC PSY SOC ANT HST GEO MAX IR sequence'
-            },
-            {
-                type: 'lac',
-                category: 'Liberal Arts Core',
-                title: 'Critical Reflections on Ethical and Social Issues',
-                requirement: '3 courses, 9-12 credits',
-                details: 'Must be taken in year listed in guidebook',
-                transferNote: 'Transfer credit NOT accepted except in articulation agreements',
-                searchText: 'critical reflections ethical social issues requirement transfer credit guidebook'
-            },
-            {
-                type: 'lac',
-                category: 'Liberal Arts Core',
-                title: 'IDEA Course Requirement',
-                requirement: '2 courses, 6 credits',
-                details: 'IDEA = Inclusion, Diversity, Equity, Accessibility',
-                description: 'Explores social justice concepts, marginalized voices, strategies for just communities',
-                overlap: 'Can overlap with other requirements',
-                searchText: 'IDEA requirement inclusion diversity equity accessibility social justice marginalized'
-            },
-            {
-                type: 'lac',
-                category: 'Liberal Arts Core',
-                title: 'Uniquely Counting Rule',
-                minorRule: '6 upper division credits uniquely counting',
-                baRule: '12 upper division credits uniquely counting',
-                bsRule: '15 upper division credits uniquely counting',
-                ilmRule: '12 upper division credits uniquely counting',
-                searchText: 'uniquely counting rule upper division credits minor BA BS ILM major requirements overlap double count'
-            },
-            {
-                type: 'lac',
-                category: 'Liberal Arts Core',
-                title: 'Transfer Students with A.A./A.S.',
-                requirement: 'Must complete Liberal Skills + Critical Reflections',
-                divisions: 'Complete 4 courses in ONE division, 2 courses in each of the other two divisions',
-                labNote: 'Must include one lab course',
-                searchText: 'transfer students AA AS associate degree liberal skills critical reflections divisions lab requirements'
-            },
-            {
-                type: 'lac',
-                category: 'Liberal Arts Core',
-                title: 'AP Credit Policy',
-                maximum: 'Maximum 30 credits from all extra-institutional sources',
-                preHealth: 'Pre-health students consult advisor before accepting AP Bio/Chem/Math',
-                searchText: 'AP credit advanced placement policy maximum 30 credits extra institutional pre-health biology chemistry mathematics'
-            },
-            
-            // SAMPLE ACADEMIC PLANS (Representative Sample from 57 total)
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Biology B.A. Plan',
-                courses: 'BIO 121/122→123/224→322→323→324, CHE 106/107→116/117→275/276 OR MAT 285/221, 4 BIO 300+ (1 lab)',
-                credits: '120 credits total',
-                keyNotes: '9 upper division credits minimum; Organic Chem OR Calc/Stats required',
-                searchText: 'biology BA bachelor arts BIO 121 BIO 122 BIO 123 BIO 224 BIO 322 BIO 323 BIO 324 CHE chemistry organic MAT math calculus statistics lab upper division four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Biology B.S. Plan',
-                courses: 'BIO 121/122→123/224→322→323→324, CHE 106/107→116/117→275/276, MAT 221, 6 BIO 300+ with concentration',
-                credits: '120 credits total',
-                keyNotes: '18 upper division credits; Organic Chem AND Calc/Stats required; Concentration mandatory',
-                searchText: 'biology BS bachelor science BIO 121 BIO 122 BIO 123 BIO 224 BIO 322 BIO 323 BIO 324 CHE chemistry organic MAT 221 math calculus concentration upper division four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Psychology B.A. Plan',
-                courses: 'PSY 205→374, MAT 121, PSY 322→252→213, PSY 335→395, PSY Advanced Elective, 4 PSY Electives',
-                credits: '120 credits total',
-                keyNotes: '30 PSY credits (18 upper division); Statistics sequence required; Complete PSY 213 by sophomore year',
-                searchText: 'psychology BA bachelor arts PSY 205 PSY 374 PSY 322 PSY 252 PSY 213 PSY 335 PSY 395 MAT 121 statistics electives upper division four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Psychology B.S. Plan',
-                courses: 'PSY 205→374→322→252→213, MAT 121, Natural Science Sequence (2 courses), PSY 335→395, Two PSY Lab-Lecture Combos, 3 Natural Science courses',
-                credits: '120 credits total',
-                keyNotes: '30 PSY credits (30 upper division Fall 23+); Lab-Lecture Sequence (6 cr); Natural Science (8 cr)',
-                searchText: 'psychology BS bachelor science PSY 205 PSY 374 PSY 322 PSY 252 PSY 213 PSY 335 PSY 395 lab lecture natural science upper division four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Economics B.A. Plan',
-                courses: 'ECN 101→102/203, MAT 284, ECN 301→302, ECN 422, 3 ECN 300+ Electives (2 must be 400+)',
-                credits: '120 credits total',
-                keyNotes: 'MAT 284 required with C or higher; Social Science sequence: ECN 101→102/203→302',
-                searchText: 'economics BA bachelor arts ECN 101 ECN 102 ECN 203 ECN 301 ECN 302 ECN 422 MAT 284 electives four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Economics B.S. Plan',
-                courses: 'ECN 101→102/203, MAT 295→296, ECN 311→302, ECN 505→521→522, 4 ECN 300+ (3 must be 400+)',
-                credits: '120 credits total',
-                keyNotes: 'MAT 295+296 with C average required; Much more math-intensive than B.A.',
-                searchText: 'economics BS bachelor science ECN 101 ECN 102 ECN 203 ECN 311 ECN 302 ECN 505 ECN 521 ECN 522 MAT 295 MAT 296 calculus four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Political Science B.A. Plan',
-                courses: 'PSC 121, PSC 100-199, PSC 202, PSC International Elective, 4 PSC 300+ Cluster Courses, 4 PSC 300+ Electives',
-                credits: '120 credits total',
-                keyNotes: 'Must declare cluster/concentration (unlocks courses in DegreeWorks); PSC 202 counts as quantitative',
-                searchText: 'political science BA bachelor arts PSC 121 PSC 202 cluster concentration degreeworks international elective upper division four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Chemistry B.A. (Chemistry Track) Plan',
-                courses: 'CHE 106/107→116/117→275/276→325/326, MAT 285/295→286/296, PHY 211/221→212/222, CHE 346/347→356/357, CHE 335/444, Chemistry Track Course',
-                credits: '120 credits total',
-                keyNotes: 'Complete calc/physics by end of Year 2; Multiple tracks available',
-                searchText: 'chemistry BA bachelor arts CHE 106 CHE 116 CHE 275 CHE 325 CHE 346 CHE 356 MAT physics organic physical analytical four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Mathematics B.A. Plan',
-                courses: 'MAT 295→296→331→397→375, MAT 412, 5 MAT 400+ electives',
-                credits: '120 credits total',
-                keyNotes: 'Natural Science/Math divisional: MAT 295→296→331',
-                searchText: 'mathematics BA bachelor arts MAT 295 MAT 296 MAT 331 MAT 397 MAT 375 MAT 412 calculus linear algebra abstract algebra four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'English and Textual Studies B.A. Plan',
-                courses: 'ENG 100-199→ENG 242, 8 ENG 300+ courses',
-                credits: '120 credits total',
-                keyNotes: 'Humanities sequence: ENG 100-199→ENG 242→ENG 300+',
-                searchText: 'english textual studies BA bachelor arts ENG 242 literature writing upper division four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'History B.A. Plan',
-                courses: 'Foundation Sequence (2 courses), HST 301, HST 401, 5 HST 300+ electives',
-                credits: '120 credits total (10 HST courses total)',
-                keyNotes: 'HST 301 is research methods; HST 401 is capstone seminar',
-                searchText: 'history BA bachelor arts HST 301 HST 401 foundation sequence research methods capstone upper division four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Sociology B.A. Plan',
-                courses: 'SOC 101→200+, SOC 318→300+, SOC/WGS 319, 3 SOC 300+, SOC 406, 2 SOC 300+',
-                credits: '120 credits total',
-                keyNotes: 'Social Science divisional: SOC 101→SOC 248/281→SOC 300+; SOC 406 is capstone',
-                searchText: 'sociology BA bachelor arts SOC 101 SOC 318 SOC 319 SOC 406 capstone upper division four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'International Relations B.A. Plan',
-                courses: 'PSC 124/139, Language through 201, ECN 101/203, MAX 132 or ANT 185, Intro Research Methods, Advanced Research Methods, Capstone, 6 Concentration courses',
-                credits: '120 credits total',
-                keyNotes: 'Language through 201 required; Two concentration areas',
-                searchText: 'international relations BA bachelor arts PSC 124 PSC 139 ECN language MAX 132 ANT 185 research methods capstone concentration four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Philosophy B.A. Plan',
-                courses: 'PHI 107/109/125/171/175/191/192 (3 courses), PHI Ancient, PHI Modern, PHI Logic, PHI Value Theory, 4 PHI Electives',
-                credits: '120 credits total (10 PHI courses)',
-                keyNotes: 'Covers ancient, modern, logic, and value theory areas',
-                searchText: 'philosophy BA bachelor arts PHI 107 PHI 109 PHI 125 PHI 171 PHI 175 PHI 191 PHI 192 ancient modern logic ethics value theory four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Anthropology B.A. Plan',
-                courses: 'ANT 111, ANT 131, ANT 141/145, Area Focus Course, Anthropological Methods, ANT 311, 6 ANT Electives',
-                credits: '120 credits total',
-                keyNotes: 'Covers cultural, biological, and archaeological anthropology; Area focus required',
-                searchText: 'anthropology BA bachelor arts ANT 111 ANT 131 ANT 141 ANT 145 ANT 311 cultural biological archaeological methods area focus four year plan'
-            },
-            {
-                type: 'plan',
-                category: 'Academic Plan',
-                title: 'Communication Sciences and Disorders B.S. Plan',
-                courses: 'CSD 212, BIO 121/122 or 221, CSD 315→316→325, CSD 422, MAT 121/221, CHE 106 or PHY 101, CSD 451→429, CSD 345→409, CSD 435→450→477',
-                credits: '120 credits total',
-                keyNotes: 'Sequence-heavy major with specific course progressions; Lab science required',
-                searchText: 'communication sciences disorders CSD speech language hearing BS bachelor science CSD 212 CSD 315 CSD 316 CSD 325 CSD 422 CSD 451 four year plan'
-            }
-        ];
+        const resources = [];
+        
+        // CAREER ROADMAPS
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Business Management and Administration',
+            subsectors: ['Administrative Support', 'General Management', 'Operations Management', 'Business Information Management', 'Human Resources Management'],
+            majors: ['Applied Math', 'Economics', 'International Relations', 'Policy Studies', 'Psychology', 'Sociology'],
+            courses: ['ACC 252', 'BPS 472', 'ECN 365', 'ECN 373', 'ECN 451', 'EEE 370'],
+            experiential: ['Blackstone Launchpad', 'Winston Fisher Seminar', 'Corporate Rotation Programs'],
+            jobs: ['Account Executive', 'Business Analyst', 'HR Specialist', 'Operations Manager', 'Project Manager'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/business-management-and-administration/',
+            searchText: 'business management administration administrative support general management operations human resources applied math economics international relations policy psychology sociology ACC 252 BPS 472 ECN 365 ECN 373 ECN 451 EEE 370 account executive analyst hr specialist operations manager project manager'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Law, Public Safety, Corrections, and Security',
+            subsectors: ['Correction Services', 'Law Enforcement Services', 'Legal Services', 'Security and Protective Services'],
+            majors: ['Anthropology', 'Economics', 'International Relations', 'Philosophy', 'Policy Studies', 'Political Science', 'Psychology', 'Sociology'],
+            courses: ['ANT 185', 'ANT 273', 'HST 210', 'PAI 735', 'PAF 101', 'PHI 191', 'PHI 293', 'PHI 297', 'PSC 124', 'PSC 125'],
+            experiential: ['Pre-Law Advising', 'Mock Trial', 'Legal aid internships'],
+            jobs: ['Legal Assistant', 'Paralegal', 'Court Reporter', 'Police Officer', 'Corrections Officer'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/law-public-safety-corrections-security/',
+            searchText: 'law public safety corrections security legal enforcement paralegal anthropology economics international relations philosophy policy political science psychology sociology ANT 185 ANT 273 HST 210 PAI 735 PAF 101 PHI 191 PHI 293 PHI 297 PSC 124 PSC 125 legal assistant court reporter police officer'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Arts, AV Technology, and Communication',
+            subsectors: ['AV Technology', 'Journalism & Broadcasting', 'Performing Arts', 'Printing Technology', 'Telecommunications', 'Visual Arts'],
+            majors: ['African American Studies', 'English', 'Film', 'History of Art', 'Music History', 'Philosophy', 'Religion', 'Women and Gender Studies', 'Writing and Rhetoric'],
+            courses: ['AAS 231', 'ENG 242', 'FIL 221', 'HOA 105/106', 'HOM 125', 'PHI 209', 'REL 120', 'WGS 101', 'WRT 255'],
+            experiential: ['Film festivals', 'Galleries', 'Museums', 'Student publications', 'Syracuse Stage', 'WAER Radio'],
+            jobs: ['Art Director', 'Broadcast Technician', 'Editor', 'Film Editor', 'Multimedia Artist', 'Photographer', 'Technical Writer', 'Video Producer'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/arts-av-technology-and-communication/',
+            searchText: 'arts av technology communication journalism broadcasting performing visual film music art history photography editor multimedia producer writer creative'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Health Science',
+            subsectors: ['Biotechnology Research', 'Diagnostic Services', 'Health Informatics', 'Support Services', 'Therapeutic Services'],
+            majors: ['Anthropology', 'Biology', 'Biotechnology', 'Chemistry', 'Communication Sciences and Disorders', 'Neuroscience', 'Philosophy', 'Psychology', 'Sociology'],
+            courses: ['ANT 273', 'BIO 121/123/224/322', 'BCM 475', 'CHE 106/116', 'CSD 212/315', 'NEU 301', 'PHI 293', 'PSY 335', 'SOC 364'],
+            experiential: ['Barnes Center', 'Community health programs', 'Health humanities', 'Hospital volunteering', 'Lab research', 'Public health internships'],
+            jobs: ['Clinical Research Coordinator', 'Genetic Counselor', 'Healthcare Administrator', 'Medical Lab Technologist', 'Occupational Therapist', 'Public Health Analyst', 'Speech Pathologist'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/health-science/',
+            searchText: 'health science biotechnology diagnostic therapeutic medical healthcare biology chemistry CSD neuroscience psychology public health clinical research genetic counselor therapist'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Marketing',
+            subsectors: ['Management and Entrepreneurship', 'Marketing Communications', 'Marketing Research', 'Merchandising', 'Professional Sales'],
+            majors: ['Economics', 'English', 'Geography', 'International Relations', 'Psychology', 'Sociology', 'Writing and Rhetoric'],
+            courses: ['ECN 311', 'ENG 303', 'GEO 273', 'PSY 335', 'SOC 281', 'WRT 307'],
+            experiential: ['Blackstone Launchpad', 'Marketing internships', 'Social media campaigns', 'Student organizations'],
+            jobs: ['Account Representative', 'Brand Manager', 'Data Analyst', 'Marketing Manager', 'Media Relations', 'Product Manager', 'Social Media Manager'],
+            certifications: ['Digital Marketing', 'Google Analytics', 'HubSpot', 'Professional Certified Marketer'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/marketing/',
+            searchText: 'marketing brand manager social media advertising sales merchandising research communications analytics data product manager account representative digital'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'STEM',
+            subsectors: ['Engineering and Technology', 'Science and Mathematics'],
+            majors: ['Applied Mathematics', 'Biology', 'Biotechnology', 'Chemistry', 'Communication Sciences and Disorders', 'Earth Sciences', 'Mathematics', 'Physics', 'Statistics'],
+            courses: ['BIO courses', 'CHE courses', 'CSD 212', 'EAR 105', 'MAT 295/296', 'PHY 211/212', 'STT courses'],
+            experiential: ['Collaborative research', 'Lab work', 'NSF REU', 'Research internships', 'Shaw Center'],
+            jobs: ['Actuary', 'Biochemist', 'Data Scientist', 'Financial Analyst', 'Research Scientist', 'Software Developer', 'Statistician'],
+            certifications: ['AWS', 'CFA', 'Data Science', 'SAS', 'Tableau'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/stem/',
+            searchText: 'STEM science technology engineering mathematics biology chemistry physics data scientist research actuary biochemist software developer statistician lab'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Government and Public Administration',
+            subsectors: ['Foreign Service', 'Governance', 'National Security', 'Planning', 'Public Management', 'Regulation', 'Revenue and Taxation'],
+            majors: ['Economics', 'Geography', 'History', 'International Relations', 'Philosophy', 'Policy Studies', 'Political Science', 'Sociology'],
+            courses: ['ECN 311', 'GEO 272', 'HST 210', 'PSC 124/125', 'PST 101', 'SOC 318'],
+            experiential: ['Congressional internships', 'Government agencies', 'Maxwell in DC', 'Model UN', 'Public service programs'],
+            jobs: ['City Planner', 'Diplomat', 'Foreign Service Officer', 'Intelligence Analyst', 'Legislative Assistant', 'Policy Analyst', 'Program Coordinator'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/government-and-public-administration/',
+            searchText: 'government public administration policy foreign service national security diplomat intelligence analyst city planner legislative assistant program coordinator regulation'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Finance',
+            subsectors: ['Accounting', 'Banking Services', 'Business Finance', 'Insurance', 'Securities and Investments'],
+            majors: ['Applied Mathematics', 'Economics', 'Mathematics', 'Statistics'],
+            courses: ['ACC 252', 'ECN 311/365/451/465', 'FIN 256/301', 'MAT 295/296', 'STT courses'],
+            experiential: ['Finance club', 'Investment club', 'Stock trading simulations', 'Summer analyst programs', 'Wall Street immersion'],
+            jobs: ['Accountant', 'Actuarial Analyst', 'Credit Analyst', 'Financial Analyst', 'Insurance Underwriter', 'Investment Banker', 'Risk Manager'],
+            certifications: ['CFA', 'CFP', 'CMA', 'CPA', 'FRM'],
+            employers: ['Banks', 'Consulting firms', 'Financial services', 'Insurance companies', 'Investment firms'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/finance/',
+            searchText: 'finance accounting banking investment securities insurance financial analyst accountant actuary credit analyst investment banker risk manager CPA CFA economics'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Human Services',
+            subsectors: ['Consumer Services', 'Counseling and Mental Health', 'Early Childhood Development', 'Family and Community Services', 'Personal Care Services'],
+            majors: ['African American Studies', 'Anthropology', 'Child and Family Studies', 'Psychology', 'Sociology', 'Women and Gender Studies'],
+            courses: ['AAS 231', 'ANT 273', 'HFS 201/202', 'PSY 335/374', 'SOC 364', 'WGS 310'],
+            experiential: ['Community service', 'Mental health awareness', 'Nonprofit internships', 'Social service agencies', 'Volunteer programs'],
+            jobs: ['Case Manager', 'Community Outreach Coordinator', 'Family Advocate', 'Mental Health Counselor', 'Social Worker', 'Youth Program Coordinator'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/human-services/',
+            searchText: 'human services social work counseling mental health community services family services case manager nonprofit youth programs child development psychology sociology'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Hospitality and Tourism',
+            subsectors: ['Lodging', 'Recreation and Attractions', 'Restaurants and Food Services', 'Travel and Tourism'],
+            majors: ['Anthropology', 'Geography', 'History', 'International Relations', 'Languages', 'Sociology'],
+            courses: ['ANT 185', 'GEO 171', 'HST courses', 'Language courses', 'SOC 248'],
+            experiential: ['Event planning', 'Hotel management internships', 'Study abroad', 'Tourism projects', 'Travel industry'],
+            jobs: ['Convention Planner', 'Event Coordinator', 'Hotel Manager', 'Tour Guide', 'Travel Agent'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/hospitality-and-tourism/',
+            searchText: 'hospitality tourism hotel restaurant travel recreation event planning convention tour guide food services lodging attractions international'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Information Technology',
+            subsectors: ['Information Support and Services', 'Network Systems', 'Programming and Software Development', 'Web and Digital Communications'],
+            majors: ['Applied Mathematics', 'Mathematics', 'Physics', 'Statistics'],
+            courses: ['CIS courses', 'CSE 382', 'IST 195/233', 'MAT 495'],
+            experiential: ['Coding bootcamps', 'Hackathons', 'IT internships', 'Software projects', 'Tech startups'],
+            jobs: ['Database Administrator', 'IT Specialist', 'Network Administrator', 'Software Developer', 'Systems Analyst', 'Web Developer'],
+            certifications: ['AWS', 'CompTIA', 'Cisco', 'Microsoft Azure', 'Oracle'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/information-technology/',
+            searchText: 'information technology IT software developer programming web development network systems database administrator cybersecurity coding computer science'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Education and Training',
+            subsectors: ['Administration and Administrative Support', 'Professional Support Services', 'Teaching and Training'],
+            majors: ['All majors', 'Biology', 'Chemistry', 'English', 'History', 'Mathematics', 'Physics', 'Social Sciences'],
+            courses: ['Subject-specific courses', 'Education minors available'],
+            experiential: ['Tutoring', 'Teaching assistantships', 'Education internships', 'Youth programs'],
+            jobs: ['Educational Administrator', 'Instructional Coordinator', 'Teacher', 'Training Specialist', 'Tutor'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/education-and-training/',
+            searchText: 'education training teacher teaching administrator instructional coordinator tutoring youth programs school education policy curriculum'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Manufacturing',
+            subsectors: ['Health Safety and Environmental', 'Logistics and Inventory Control', 'Maintenance and Repair', 'Production', 'Quality Assurance'],
+            majors: ['Applied Mathematics', 'Biology', 'Biotechnology', 'Chemistry', 'Geography', 'Physics'],
+            courses: ['BEN 433', 'BIO 422', 'CHE 335', 'ECN 365', 'GEO 273'],
+            experiential: ['BioInspired Institute', 'Operations management', 'Supply chain internships'],
+            jobs: ['Chemical Analyst', 'Facilities Planner', 'Logistics Analyst', 'Quality Control Technician', 'Supply Chain Manager'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/manufacturing/',
+            searchText: 'manufacturing production quality assurance logistics supply chain operations facilities quality control analyst biotechnology chemistry'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Transportation, Distribution, and Logistics',
+            subsectors: ['Facility and Mobile Equipment Maintenance', 'Logistics Planning', 'Sales and Service', 'Transportation Operations', 'Warehousing'],
+            majors: ['Economics', 'Geography', 'International Relations'],
+            courses: ['ECN 365/367', 'GEO 273', 'MAR 301'],
+            experiential: ['Supply chain internships', 'Global logistics', 'Franklin Center'],
+            jobs: ['Buyer', 'Logistics Analyst', 'Operations Researcher', 'Supply Chain Manager', 'Transportation Manager'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/transportation-distribution-and-logistics/',
+            searchText: 'transportation distribution logistics supply chain buyer operations warehousing shipping freight global trade economics geography'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Architecture and Construction',
+            subsectors: ['Construction', 'Design', 'Maintenance and Operations'],
+            majors: ['Anthropology', 'Applied Mathematics', 'Geography', 'History of Architecture', 'Physics', 'Policy Studies'],
+            courses: ['ANT 414', 'ARC 133/134', 'HOA 105/106', 'PST 367'],
+            experiential: ['Syracuse Abroad Florence/London', 'Historic preservation', 'Urban planning internships'],
+            jobs: ['Cartographer', 'Construction Manager', 'Cost Estimator', 'Interior Designer', 'Urban Planner'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/architecture-and-construction/',
+            searchText: 'architecture construction urban planning design cartographer historic preservation interior design cost estimator building engineering'
+        });
+
+        resources.push({
+            type: 'career',
+            category: 'Career Roadmap',
+            title: 'Agriculture, Food, and Natural Resources',
+            subsectors: ['Agribusiness Systems', 'Animal Systems', 'Environmental Service Systems', 'Food Products and Processing', 'Natural Resource Systems', 'Plant Systems'],
+            majors: ['Biology', 'Biotechnology', 'Chemistry', 'Earth Sciences', 'Geography'],
+            courses: ['BIO 121/123', 'CHE 106', 'EAR 105/210', 'GEO 103/155'],
+            experiential: ['BioInspired Institute', 'Environmental Finance Center', 'ESF partnerships', 'Study abroad'],
+            jobs: ['Agricultural Manager', 'Environmental Scientist', 'Food Scientist', 'Natural Resource Manager', 'Sustainability Specialist'],
+            url: 'https://artsandsciences.syracuse.edu/student-success/career-exploration/career-roadmap/agriculture-food-and-natural-resources/',
+            searchText: 'agriculture food natural resources environmental sustainability farm agribusiness food science plant biology natural resource manager conservation'
+        });
+
+        // MAJOR CHEAT SHEETS
+        resources.push({
+            type: 'major',
+            category: 'Major Cheat Sheet',
+            title: 'Political Science',
+            declaration: 'One PSC course with C- or higher',
+            degreeTypes: 'B.A. only (no B.S.)',
+            requirements: 'PSC 121 early, PSC 202 sophomore year, PSC 202 counts as quantitative',
+            issues: 'Must declare cluster/concentration to unlock courses in DegreeWorks',
+            contact: 'Candy Brooks - cbrook01@syr.edu / 315.443.2238',
+            searchText: 'political science PSC government policy PSC 121 PSC 202 BA bachelor arts cluster concentration degreeworks candy brooks'
+        });
+
+        resources.push({
+            type: 'major',
+            category: 'Major Cheat Sheet',
+            title: 'Psychology',
+            declaration: 'No requirements',
+            degreeTypes: 'B.A. and B.S. available',
+            bsRequirements: '30 PSY credits (30 upper division Fall 23+), Statistics sequence, Lab Lecture Sequence (6 cr), Natural Science (8 cr)',
+            baRequirements: '30 PSY credits (18 upper division), Statistics sequence, Advanced Elective',
+            timing: 'Complete PSY 213 by end of sophomore year',
+            contact: 'Jennifer Bragg - Psyundergrad@syr.edu',
+            searchText: 'psychology PSY mental health behavior BA BS bachelor science arts statistics PSY 213 lab natural science jennifer bragg'
+        });
+
+        resources.push({
+            type: 'major',
+            category: 'Major Cheat Sheet',
+            title: 'Economics',
+            declaration: 'No requirements',
+            degreeTypes: 'B.A. and B.S. available',
+            bsRequirements: 'MAT 295+296 (C average), ECN 311/302/505/521/522',
+            baRequirements: 'MAT 284 (C or higher), ECN 301/302/422',
+            advice: 'If B.S. student gets below C in MAT 295, encourage switch to B.A.',
+            contact: 'economics@syr.edu',
+            searchText: 'economics ECN business finance math MAT 295 MAT 296 MAT 284 ECN 311 ECN 302 ECN 505 ECN 521 ECN 522 ECN 301 ECN 422 BA BS bachelor'
+        });
+
+        // LIBERAL ARTS CORE (12 resources)
+        resources.push({
+            type: 'lac',
+            category: 'Liberal Arts Core',
+            title: 'Writing Skills Requirement',
+            requirement: '3 courses, 8-10 credits',
+            courses: 'WRT 105 (or WRT 109 Honors, or ENL 211), Writing-Intensive course, WRT 205 (or WRT 209 Honors, or ENL 213)',
+            exemptions: 'AP Lit/Comp 4-5 can register for WRT 205; AP Lang/Comp 4+ exempt from WRT 105/205',
+            searchText: 'writing skills requirement WRT 105 WRT 205 WRT 109 WRT 209 ENL 211 ENL 213 writing intensive AP literature composition exemption'
+        });
+
+        resources.push({
+            type: 'lac',
+            category: 'Liberal Arts Core',
+            title: 'Language Skills Requirement',
+            requirement: '1-3 courses, 4-12 credits',
+            details: 'Complete through course numbered 201',
+            languages: 'ASL, Ancient Greek, Arabic, Chinese, French, German, Hebrew, Hindi/Urdu, Italian, Japanese, Korean, Latin, Portuguese, Russian, Spanish, Turkish',
+            exemptions: 'AP score of 4 in Chinese/Japanese/Latin/Spanish Literature; native speakers can petition; international students can petition',
+            notes: 'Cannot take lower-level after earning grade in higher-level',
+            searchText: 'language skills requirement foreign language 201 ASL greek arabic chinese french german hebrew hindi urdu italian japanese korean latin portuguese russian spanish turkish AP native speaker international exemption petition'
+        });
+
+        resources.push({
+            type: 'lac',
+            category: 'Liberal Arts Core',
+            title: 'Quantitative Skills Requirement',
+            requirement: '2 courses, 6-8 credits (Alternative to Language)',
+            details: 'First Course + different Second Course',
+            firstCourse: 'MAT 121, 183, 193, 194, 221, 285, 295',
+            secondCourse: 'GEO 386, MAT 122, 222, 284, 285, 295, 286, 296, MAX 201, PHP 223, PSC 202, PSY 252, SOC 318, SWK 361',
+            exemptions: 'Calculus 284+ with C or better exempts from second course',
+            notes: 'MAT 284 cannot count for both Quantitative AND Natural Science divisions',
+            searchText: 'quantitative skills requirement math statistics MAT 121 MAT 221 MAT 285 MAT 295 MAT 284 PSC 202 PSY 252 SOC 318 GEO 386 MAX 201 calculus'
+        });
+
+        resources.push({
+            type: 'lac',
+            category: 'Liberal Arts Core',
+            title: 'Humanities Division',
+            requirement: '4 courses, 12 credits',
+            details: '2-course sequence required; No more than 3 courses from single department; No more than 1 course from outside A&S',
+            departments: 'AAS, English, LLL, Art/Music Histories, Philosophy, Religion, WGS, Writing',
+            sequences: 'HOA (any two HOA courses), HOM (any two HOM), ENG (two 100-level or two 200-level or one of each), PHI (any two except 171+172), REL (any REL + any 200+ REL), Language 202+',
+            searchText: 'humanities division requirement english philosophy religion art history music history HOA HOM ENG PHI REL literature languages sequence'
+        });
+
+        resources.push({
+            type: 'lac',
+            category: 'Liberal Arts Core',
+            title: 'Natural Sciences and Mathematics Division',
+            requirement: '4 courses, 12-16 credits',
+            details: 'Must include one lab course; 2-course sequence required',
+            departments: 'Biology, Chemistry, CSD, Earth/Environmental Sciences, Physics, Mathematics',
+            sequences: 'BIO 121(lab 122)-123(lab 124), CHE 106(lab 107)-116(lab 117), PHY 101-102, PHY 211(lab 221)-212(lab 222), MAT 285-286, MAT 295-296, EAR 110-210, GEO 155-215',
+            labNote: 'Lab courses marked with ~ in catalog',
+            searchText: 'natural sciences mathematics division requirement biology chemistry physics math lab BIO CHE PHY MAT EAR GEO CSD laboratory science sequence'
+        });
+
+        resources.push({
+            type: 'lac',
+            category: 'Liberal Arts Core',
+            title: 'Social Sciences Division',
+            requirement: '4 courses, 12 credits',
+            details: '2-course sequence required; No more than 3 courses from single department',
+            departments: 'AAS, Anthropology, Economics, Geography, History, Political Science, Policy Studies, Psychology, Sociology, IR, WGS',
+            sequences: 'ECN 101-102, PSC 121/123/124/125 combinations, ANT 111/121 + 200+, HST 101-102, HST 121-122, GEO combinations, PSY 205/209 + upper level, SOC 101-102, MAX 123-132',
+            searchText: 'social sciences division requirement economics political science psychology sociology anthropology history geography ECN PSC PSY SOC ANT HST GEO MAX IR sequence'
+        });
+
+        resources.push({
+            type: 'lac',
+            category: 'Liberal Arts Core',
+            title: 'Critical Reflections on Ethical and Social Issues',
+            requirement: '3 courses, 9-12 credits',
+            details: 'Must be taken in year listed in guidebook',
+            transferNote: 'Transfer credit NOT accepted except in articulation agreements',
+            searchText: 'critical reflections ethical social issues requirement transfer credit guidebook'
+        });
+
+        resources.push({
+            type: 'lac',
+            category: 'Liberal Arts Core',
+            title: 'IDEA Course Requirement',
+            requirement: '2 courses, 6 credits',
+            details: 'IDEA = Inclusion, Diversity, Equity, Accessibility',
+            description: 'Explores social justice concepts, marginalized voices, strategies for just communities',
+            overlap: 'Can overlap with other requirements',
+            searchText: 'IDEA requirement inclusion diversity equity accessibility social justice marginalized'
+        });
+
+        resources.push({
+            type: 'lac',
+            category: 'Liberal Arts Core',
+            title: 'Uniquely Counting Rule',
+            minorRule: '6 upper division credits uniquely counting',
+            baRule: '12 upper division credits uniquely counting',
+            bsRule: '15 upper division credits uniquely counting',
+            ilmRule: '12 upper division credits uniquely counting',
+            searchText: 'uniquely counting rule upper division credits minor BA BS ILM major requirements overlap double count'
+        });
+
+        resources.push({
+            type: 'lac',
+            category: 'Liberal Arts Core',
+            title: 'Transfer Students with A.A./A.S.',
+            requirement: 'Must complete Liberal Skills + Critical Reflections',
+            divisions: 'Complete 4 courses in ONE division, 2 courses in each of the other two divisions',
+            labNote: 'Must include one lab course',
+            searchText: 'transfer students AA AS associate degree liberal skills critical reflections divisions lab requirements'
+        });
+
+        resources.push({
+            type: 'lac',
+            category: 'Liberal Arts Core',
+            title: 'AP Credit Policy',
+            maximum: 'Maximum 30 credits from all extra-institutional sources',
+            preHealth: 'Pre-health students consult advisor before accepting AP Bio/Chem/Math',
+            searchText: 'AP credit advanced placement policy maximum 30 credits extra institutional pre-health biology chemistry mathematics'
+        });
+
+        // ACADEMIC PLANS (16 sample plans)
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Biology B.A. Plan',
+            courses: 'BIO 121/122, BIO 123/224, BIO 322, BIO 323, BIO 324, CHE 106/107, CHE 116/117, CHE 275/276 OR MAT 285/221, 4 BIO 300+ (1 lab)',
+            credits: '120 credits total',
+            keyNotes: '9 upper division credits minimum; Organic Chem OR Calc/Stats required',
+            searchText: 'biology BA bachelor arts BIO 121 BIO 122 BIO 123 BIO 224 BIO 322 BIO 323 BIO 324 CHE chemistry organic MAT math calculus statistics lab upper division four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Biology B.S. Plan',
+            courses: 'BIO 121/122, BIO 123/224, BIO 322, BIO 323, BIO 324, CHE 106/107, CHE 116/117, CHE 275/276, MAT 221, 6 BIO 300+ with concentration',
+            credits: '120 credits total',
+            keyNotes: '18 upper division credits; Organic Chem AND Calc/Stats required; Concentration mandatory',
+            searchText: 'biology BS bachelor science BIO 121 BIO 122 BIO 123 BIO 224 BIO 322 BIO 323 BIO 324 CHE chemistry organic MAT 221 math calculus concentration upper division four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Psychology B.A. Plan',
+            courses: 'PSY 205, PSY 374, MAT 121, PSY 322, PSY 252, PSY 213, PSY 335, PSY 395, PSY Advanced Elective, 4 PSY Electives',
+            credits: '120 credits total',
+            keyNotes: '30 PSY credits (18 upper division); Statistics sequence required; Complete PSY 213 by sophomore year',
+            searchText: 'psychology BA bachelor arts PSY 205 PSY 374 PSY 322 PSY 252 PSY 213 PSY 335 PSY 395 MAT 121 statistics electives upper division four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Psychology B.S. Plan',
+            courses: 'PSY 205, PSY 374, PSY 322, PSY 252, PSY 213, MAT 121, Natural Science Sequence (2 courses), PSY 335, PSY 395, Two PSY Lab-Lecture Combos, 3 Natural Science courses',
+            credits: '120 credits total',
+            keyNotes: '30 PSY credits (30 upper division Fall 23+); Lab-Lecture Sequence (6 cr); Natural Science (8 cr)',
+            searchText: 'psychology BS bachelor science PSY 205 PSY 374 PSY 322 PSY 252 PSY 213 PSY 335 PSY 395 lab lecture natural science upper division four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Economics B.A. Plan',
+            courses: 'ECN 101, ECN 102/203, MAT 284, ECN 301, ECN 302, ECN 422, 3 ECN 300+ Electives (2 must be 400+)',
+            credits: '120 credits total',
+            keyNotes: 'MAT 284 required with C or higher; Social Science sequence: ECN 101 to ECN 102/203 to ECN 302',
+            searchText: 'economics BA bachelor arts ECN 101 ECN 102 ECN 203 ECN 301 ECN 302 ECN 422 MAT 284 electives four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Economics B.S. Plan',
+            courses: 'ECN 101, ECN 102/203, MAT 295, MAT 296, ECN 311, ECN 302, ECN 505, ECN 521, ECN 522, 4 ECN 300+ (3 must be 400+)',
+            credits: '120 credits total',
+            keyNotes: 'MAT 295+296 with C average required; Much more math-intensive than B.A.',
+            searchText: 'economics BS bachelor science ECN 101 ECN 102 ECN 203 ECN 311 ECN 302 ECN 505 ECN 521 ECN 522 MAT 295 MAT 296 calculus four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Political Science B.A. Plan',
+            courses: 'PSC 121, PSC 100-199, PSC 202, PSC International Elective, 4 PSC 300+ Cluster Courses, 4 PSC 300+ Electives',
+            credits: '120 credits total',
+            keyNotes: 'Must declare cluster/concentration (unlocks courses in DegreeWorks); PSC 202 counts as quantitative',
+            searchText: 'political science BA bachelor arts PSC 121 PSC 202 cluster concentration degreeworks international elective upper division four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Chemistry B.A. (Chemistry Track) Plan',
+            courses: 'CHE 106/107, CHE 116/117, CHE 275/276, CHE 325/326, MAT 285/295, MAT 286/296, PHY 211/221, PHY 212/222, CHE 346/347, CHE 356/357, CHE 335/444, Chemistry Track Course',
+            credits: '120 credits total',
+            keyNotes: 'Complete calc/physics by end of Year 2; Multiple tracks available',
+            searchText: 'chemistry BA bachelor arts CHE 106 CHE 116 CHE 275 CHE 325 CHE 346 CHE 356 MAT physics organic physical analytical four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Mathematics B.A. Plan',
+            courses: 'MAT 295, MAT 296, MAT 331, MAT 397, MAT 375, MAT 412, 5 MAT 400+ electives',
+            credits: '120 credits total',
+            keyNotes: 'Natural Science/Math divisional: MAT 295 to MAT 296 to MAT 331',
+            searchText: 'mathematics BA bachelor arts MAT 295 MAT 296 MAT 331 MAT 397 MAT 375 MAT 412 calculus linear algebra abstract algebra four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'English and Textual Studies B.A. Plan',
+            courses: 'ENG 100-199, ENG 242, 8 ENG 300+ courses',
+            credits: '120 credits total',
+            keyNotes: 'Humanities sequence: ENG 100-199 to ENG 242 to ENG 300+',
+            searchText: 'english textual studies BA bachelor arts ENG 242 literature writing upper division four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'History B.A. Plan',
+            courses: 'Foundation Sequence (2 courses), HST 301, HST 401, 5 HST 300+ electives',
+            credits: '120 credits total (10 HST courses total)',
+            keyNotes: 'HST 301 is research methods; HST 401 is capstone seminar',
+            searchText: 'history BA bachelor arts HST 301 HST 401 foundation sequence research methods capstone upper division four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Sociology B.A. Plan',
+            courses: 'SOC 101, SOC 200+, SOC 318, SOC 300+, SOC/WGS 319, 3 SOC 300+, SOC 406, 2 SOC 300+',
+            credits: '120 credits total',
+            keyNotes: 'Social Science divisional: SOC 101 to SOC 248/281 to SOC 300+; SOC 406 is capstone',
+            searchText: 'sociology BA bachelor arts SOC 101 SOC 318 SOC 319 SOC 406 capstone upper division four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'International Relations B.A. Plan',
+            courses: 'PSC 124/139, Language through 201, ECN 101/203, MAX 132 or ANT 185, Intro Research Methods, Advanced Research Methods, Capstone, 6 Concentration courses',
+            credits: '120 credits total',
+            keyNotes: 'Language through 201 required; Two concentration areas',
+            searchText: 'international relations BA bachelor arts PSC 124 PSC 139 ECN language MAX 132 ANT 185 research methods capstone concentration four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Philosophy B.A. Plan',
+            courses: 'PHI 107/109/125/171/175/191/192 (3 courses), PHI Ancient, PHI Modern, PHI Logic, PHI Value Theory, 4 PHI Electives',
+            credits: '120 credits total (10 PHI courses)',
+            keyNotes: 'Covers ancient, modern, logic, and value theory areas',
+            searchText: 'philosophy BA bachelor arts PHI 107 PHI 109 PHI 125 PHI 171 PHI 175 PHI 191 PHI 192 ancient modern logic ethics value theory four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Anthropology B.A. Plan',
+            courses: 'ANT 111, ANT 131, ANT 141/145, Area Focus Course, Anthropological Methods, ANT 311, 6 ANT Electives',
+            credits: '120 credits total',
+            keyNotes: 'Covers cultural, biological, and archaeological anthropology; Area focus required',
+            searchText: 'anthropology BA bachelor arts ANT 111 ANT 131 ANT 141 ANT 145 ANT 311 cultural biological archaeological methods area focus four year plan'
+        });
+
+        resources.push({
+            type: 'plan',
+            category: 'Academic Plan',
+            title: 'Communication Sciences and Disorders B.S. Plan',
+            courses: 'CSD 212, BIO 121/122 or 221, CSD 315, CSD 316, CSD 325, CSD 422, MAT 121/221, CHE 106 or PHY 101, CSD 451, CSD 429, CSD 345, CSD 409, CSD 435, CSD 450, CSD 477',
+            credits: '120 credits total',
+            keyNotes: 'Sequence-heavy major with specific course progressions; Lab science required',
+            searchText: 'communication sciences disorders CSD speech language hearing BS bachelor science CSD 212 CSD 315 CSD 316 CSD 325 CSD 422 CSD 451 four year plan'
+        });
 
         let currentFilter = 'all';
 
-        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             displayResults(resources);
             document.getElementById('searchInput').addEventListener('input', performSearch);
@@ -871,12 +891,10 @@
             
             let filtered = resources;
             
-            // Apply category filter
             if (currentFilter !== 'all') {
                 filtered = filtered.filter(r => r.type === currentFilter);
             }
             
-            // Apply search filter
             if (searchTerm) {
                 filtered = filtered.filter(r => r.searchText.toLowerCase().includes(searchTerm));
             }
@@ -887,7 +905,6 @@
         function filterCategory(category) {
             currentFilter = category;
             
-            // Update button styles
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 if (btn.dataset.category === category) {
                     btn.classList.remove('inactive');
@@ -901,23 +918,14 @@
             performSearch();
         }
 
-        function displayResults(results, searchTerm = '') {
+        function displayResults(results, searchTerm) {
             const container = document.getElementById('results');
             const countEl = document.getElementById('resultsCount');
             
-            countEl.textContent = `Showing ${results.length} result${results.length !== 1 ? 's' : ''}`;
+            countEl.textContent = 'Showing ' + results.length + ' result' + (results.length !== 1 ? 's' : '');
             
             if (results.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.35-4.35"></path>
-                        </svg>
-                        <div class="empty-title">No results found</div>
-                        <div class="empty-desc">Try different keywords or filters</div>
-                    </div>
-                `;
+                container.innerHTML = '<div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg><div class="empty-title">No results found</div><div class="empty-desc">Try different keywords or filters</div></div>';
                 return;
             }
             
@@ -925,63 +933,61 @@
         }
 
         function createResultCard(resource) {
-            const badgeClass = resource.type === 'career' ? 'badge-career' : 
-                              resource.type === 'major' ? 'badge-major' : 
-                              resource.type === 'lac' ? 'badge-lac' : 'badge-plan';
+            let badgeClass = 'badge-career';
+            if (resource.type === 'major') badgeClass = 'badge-major';
+            if (resource.type === 'lac') badgeClass = 'badge-lac';
+            if (resource.type === 'plan') badgeClass = 'badge-plan';
             
-            let content = `
-                <div class="result-card">
-                    <div class="result-header">
-                        <div class="result-title">${resource.title}</div>
-                        <span class="result-badge ${badgeClass}">${resource.category}</span>
-                    </div>
-                    <div class="result-content">
-            `;
+            let content = '<div class="result-card"><div class="result-header"><div class="result-title">' + resource.title + '</div><span class="result-badge ' + badgeClass + '">' + resource.category + '</span></div><div class="result-content">';
             
             if (resource.type === 'career') {
-                if (resource.subsectors) content += `<div class="result-row"><span class="result-label">Subsectors:</span> <span class="result-value">${resource.subsectors.join(', ')}</span></div>`;
-                if (resource.majors) content += `<div class="result-row"><span class="result-label">Relevant Majors:</span> <span class="result-value">${resource.majors.join(', ')}</span></div>`;
-                if (resource.courses) content += `<div class="result-row"><span class="result-label">Key Courses:</span> <span class="result-value">${resource.courses.join(', ')}</span></div>`;
-                if (resource.experiential) content += `<div class="result-row"><span class="result-label">Experiential Learning:</span> <span class="result-value">${resource.experiential.join(', ')}</span></div>`;
-                if (resource.jobs) content += `<div class="result-row"><span class="result-label">Sample Jobs:</span> <span class="result-value">${resource.jobs.join(', ')}</span></div>`;
-                if (resource.url) content += `<a href="${resource.url}" target="_blank" class="result-link">View Full Roadmap →</a>`;
+                if (resource.subsectors) content += '<div class="result-row"><span class="result-label">Subsectors:</span> <span class="result-value">' + resource.subsectors.join(', ') + '</span></div>';
+                if (resource.majors) content += '<div class="result-row"><span class="result-label">Relevant Majors:</span> <span class="result-value">' + resource.majors.join(', ') + '</span></div>';
+                if (resource.courses) content += '<div class="result-row"><span class="result-label">Key Courses:</span> <span class="result-value">' + resource.courses.join(', ') + '</span></div>';
+                if (resource.experiential) content += '<div class="result-row"><span class="result-label">Experiential Learning:</span> <span class="result-value">' + resource.experiential.join(', ') + '</span></div>';
+                if (resource.jobs) content += '<div class="result-row"><span class="result-label">Sample Jobs:</span> <span class="result-value">' + resource.jobs.join(', ') + '</span></div>';
+                if (resource.certifications) content += '<div class="result-row"><span class="result-label">Certifications:</span> <span class="result-value">' + resource.certifications.join(', ') + '</span></div>';
+                if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">View Full Roadmap →</a>';
             } else if (resource.type === 'major') {
-                if (resource.declaration) content += `<div class="result-row"><span class="result-label">Declaration:</span> <span class="result-value">${resource.declaration}</span></div>`;
-                if (resource.degreeTypes) content += `<div class="result-row"><span class="result-label">Degree Types:</span> <span class="result-value">${resource.degreeTypes}</span></div>`;
-                if (resource.requirements) content += `<div class="result-row"><span class="result-label">Key Requirements:</span> <span class="result-value">${resource.requirements}</span></div>`;
-                if (resource.bsRequirements) content += `<div class="result-row"><span class="result-label">B.S. Requirements:</span> <span class="result-value">${resource.bsRequirements}</span></div>`;
-                if (resource.baRequirements) content += `<div class="result-row"><span class="result-label">B.A. Requirements:</span> <span class="result-value">${resource.baRequirements}</span></div>`;
-                if (resource.timing) content += `<div class="result-row"><span class="result-label">Key Timing:</span> <span class="result-value">${resource.timing}</span></div>`;
-                if (resource.advice) content += `<div class="result-row"><span class="result-label">Advisor Tip:</span> <span class="result-value">${resource.advice}</span></div>`;
-                if (resource.issues) content += `<div class="result-row"><span class="result-label">Common Issues:</span> <span class="result-value">${resource.issues}</span></div>`;
-                if (resource.contact) content += `<div class="result-row" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;"><span class="result-label">Contact:</span> <span class="result-value">${resource.contact}</span></div>`;
+                if (resource.declaration) content += '<div class="result-row"><span class="result-label">Declaration:</span> <span class="result-value">' + resource.declaration + '</span></div>';
+                if (resource.degreeTypes) content += '<div class="result-row"><span class="result-label">Degree Types:</span> <span class="result-value">' + resource.degreeTypes + '</span></div>';
+                if (resource.requirements) content += '<div class="result-row"><span class="result-label">Key Requirements:</span> <span class="result-value">' + resource.requirements + '</span></div>';
+                if (resource.bsRequirements) content += '<div class="result-row"><span class="result-label">B.S. Requirements:</span> <span class="result-value">' + resource.bsRequirements + '</span></div>';
+                if (resource.baRequirements) content += '<div class="result-row"><span class="result-label">B.A. Requirements:</span> <span class="result-value">' + resource.baRequirements + '</span></div>';
+                if (resource.timing) content += '<div class="result-row"><span class="result-label">Key Timing:</span> <span class="result-value">' + resource.timing + '</span></div>';
+                if (resource.advice) content += '<div class="result-row"><span class="result-label">Advisor Tip:</span> <span class="result-value">' + resource.advice + '</span></div>';
+                if (resource.issues) content += '<div class="result-row"><span class="result-label">Common Issues:</span> <span class="result-value">' + resource.issues + '</span></div>';
+                if (resource.contact) content += '<div class="result-row" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;"><span class="result-label">Contact:</span> <span class="result-value">' + resource.contact + '</span></div>';
             } else if (resource.type === 'lac') {
-                if (resource.requirement) content += `<div class="result-row"><span class="result-label">Requirement:</span> <span class="result-value">${resource.requirement}</span></div>`;
-                if (resource.details) content += `<div class="result-row"><span class="result-label">Details:</span> <span class="result-value">${resource.details}</span></div>`;
-                if (resource.courses) content += `<div class="result-row"><span class="result-label">Courses:</span> <span class="result-value">${resource.courses}</span></div>`;
-                if (resource.languages) content += `<div class="result-row"><span class="result-label">Languages:</span> <span class="result-value">${resource.languages}</span></div>`;
-                if (resource.firstCourse) content += `<div class="result-row"><span class="result-label">First Course Options:</span> <span class="result-value">${resource.firstCourse}</span></div>`;
-                if (resource.secondCourse) content += `<div class="result-row"><span class="result-label">Second Course Options:</span> <span class="result-value">${resource.secondCourse}</span></div>`;
-                if (resource.departments) content += `<div class="result-row"><span class="result-label">Departments:</span> <span class="result-value">${resource.departments}</span></div>`;
-                if (resource.sequences) content += `<div class="result-row"><span class="result-label">Sequences:</span> <span class="result-value">${resource.sequences}</span></div>`;
-                if (resource.description) content += `<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">${resource.description}</span></div>`;
-                if (resource.exemptions) content += `<div class="result-row"><span class="result-label">Exemptions:</span> <span class="result-value">${resource.exemptions}</span></div>`;
-                if (resource.notes) content += `<div class="result-row"><span class="result-label">Notes:</span> <span class="result-value">${resource.notes}</span></div>`;
-                if (resource.transferNote) content += `<div class="result-row"><span class="result-label">Transfer Note:</span> <span class="result-value">${resource.transferNote}</span></div>`;
-                if (resource.overlap) content += `<div class="result-row"><span class="result-label">Overlap:</span> <span class="result-value">${resource.overlap}</span></div>`;
-                if (resource.labNote) content += `<div class="result-row"><span class="result-label">Lab Requirement:</span> <span class="result-value">${resource.labNote}</span></div>`;
-                if (resource.minorRule) content += `<div class="result-row"><span class="result-label">Minor:</span> <span class="result-value">${resource.minorRule}</span></div>`;
-                if (resource.baRule) content += `<div class="result-row"><span class="result-label">B.A.:</span> <span class="result-value">${resource.baRule}</span></div>`;
-                if (resource.bsRule) content += `<div class="result-row"><span class="result-label">B.S.:</span> <span class="result-value">${resource.bsRule}</span></div>`;
-                if (resource.ilmRule) content += `<div class="result-row"><span class="result-label">ILM:</span> <span class="result-value">${resource.ilmRule}</span></div>`;
-                if (resource.divisions) content += `<div class="result-row"><span class="result-label">Divisions:</span> <span class="result-value">${resource.divisions}</span></div>`;
-                if (resource.maximum) content += `<div class="result-row"><span class="result-label">Maximum:</span> <span class="result-value">${resource.maximum}</span></div>`;
-                if (resource.preHealth) content += `<div class="result-row"><span class="result-label">Pre-Health Note:</span> <span class="result-value">${resource.preHealth}</span></div>`;
+                if (resource.requirement) content += '<div class="result-row"><span class="result-label">Requirement:</span> <span class="result-value">' + resource.requirement + '</span></div>';
+                if (resource.details) content += '<div class="result-row"><span class="result-label">Details:</span> <span class="result-value">' + resource.details + '</span></div>';
+                if (resource.courses) content += '<div class="result-row"><span class="result-label">Courses:</span> <span class="result-value">' + resource.courses + '</span></div>';
+                if (resource.languages) content += '<div class="result-row"><span class="result-label">Languages:</span> <span class="result-value">' + resource.languages + '</span></div>';
+                if (resource.firstCourse) content += '<div class="result-row"><span class="result-label">First Course Options:</span> <span class="result-value">' + resource.firstCourse + '</span></div>';
+                if (resource.secondCourse) content += '<div class="result-row"><span class="result-label">Second Course Options:</span> <span class="result-value">' + resource.secondCourse + '</span></div>';
+                if (resource.departments) content += '<div class="result-row"><span class="result-label">Departments:</span> <span class="result-value">' + resource.departments + '</span></div>';
+                if (resource.sequences) content += '<div class="result-row"><span class="result-label">Sequences:</span> <span class="result-value">' + resource.sequences + '</span></div>';
+                if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
+                if (resource.exemptions) content += '<div class="result-row"><span class="result-label">Exemptions:</span> <span class="result-value">' + resource.exemptions + '</span></div>';
+                if (resource.notes) content += '<div class="result-row"><span class="result-label">Notes:</span> <span class="result-value">' + resource.notes + '</span></div>';
+                if (resource.transferNote) content += '<div class="result-row"><span class="result-label">Transfer Note:</span> <span class="result-value">' + resource.transferNote + '</span></div>';
+                if (resource.overlap) content += '<div class="result-row"><span class="result-label">Overlap:</span> <span class="result-value">' + resource.overlap + '</span></div>';
+                if (resource.labNote) content += '<div class="result-row"><span class="result-label">Lab Requirement:</span> <span class="result-value">' + resource.labNote + '</span></div>';
+                if (resource.minorRule) content += '<div class="result-row"><span class="result-label">Minor:</span> <span class="result-value">' + resource.minorRule + '</span></div>';
+                if (resource.baRule) content += '<div class="result-row"><span class="result-label">B.A.:</span> <span class="result-value">' + resource.baRule + '</span></div>';
+                if (resource.bsRule) content += '<div class="result-row"><span class="result-label">B.S.:</span> <span class="result-value">' + resource.bsRule + '</span></div>';
+                if (resource.ilmRule) content += '<div class="result-row"><span class="result-label">ILM:</span> <span class="result-value">' + resource.ilmRule + '</span></div>';
+                if (resource.divisions) content += '<div class="result-row"><span class="result-label">Divisions:</span> <span class="result-value">' + resource.divisions + '</span></div>';
+                if (resource.maximum) content += '<div class="result-row"><span class="result-label">Maximum:</span> <span class="result-value">' + resource.maximum + '</span></div>';
+                if (resource.preHealth) content += '<div class="result-row"><span class="result-label">Pre-Health Note:</span> <span class="result-value">' + resource.preHealth + '</span></div>';
+            } else if (resource.type === 'plan') {
+                if (resource.courses) content += '<div class="result-row"><span class="result-label">Course Sequence:</span> <span class="result-value">' + resource.courses + '</span></div>';
+                if (resource.credits) content += '<div class="result-row"><span class="result-label">Total Credits:</span> <span class="result-value">' + resource.credits + '</span></div>';
+                if (resource.keyNotes) content += '<div class="result-row"><span class="result-label">Key Notes:</span> <span class="result-value">' + resource.keyNotes + '</span></div>';
             }
             
-            content += `</div></div>`;
+            content += '</div></div>';
             return content;
         }
     </script>
 </body>
-</html>
