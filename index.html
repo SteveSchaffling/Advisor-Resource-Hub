@@ -1616,7 +1616,15 @@
                 
                 // PDF EMBED for international resources with PDFs
                 if (resource.hasPdf && resource.pdfUrl) {
-                    content += '<div class="result-row" style="margin-top: 1.5rem;"><iframe src="https://docs.google.com/viewer?url=' + encodeURIComponent(resource.pdfUrl) + '&embedded=true" width="100%" height="600px" style="border: 1px solid #d1d5db; border-radius: 8px;"></iframe></div>';
+                    // Extract the raw PDF URL from the Google Viewer URL
+                    let rawPdfUrl = resource.pdfUrl;
+                    content += '<div class="result-row" style="margin-top: 1.5rem;">';
+                    content += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">';
+                    content += '<span class="result-label">Document Preview:</span>';
+                    content += '<a href="' + rawPdfUrl + '" download class="result-link" style="margin: 0; font-size: 0.875rem;">Download PDF ↓</a>';
+                    content += '</div>';
+                    content += '<iframe src="https://docs.google.com/viewer?url=' + encodeURIComponent(rawPdfUrl) + '&embedded=true" width="100%" height="600px" style="border: 1px solid #d1d5db; border-radius: 8px;"></iframe>';
+                    content += '</div>';
                 }
                 
                 // Show other fields
@@ -1640,6 +1648,7 @@
     </script>
 </body>
 </html>
+
 
 
 
