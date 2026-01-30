@@ -183,11 +183,6 @@
             color: #d97706;
         }
         
-        .badge-prehealth {
-            background-color: #dcfce7;
-            color: #16a34a;
-        }
-        
         .result-content {
             font-size: 0.875rem;
         }
@@ -334,14 +329,14 @@
                 <div class="stat-desc">Complete career pathways</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number blue">18</div>
-                <div class="stat-title">Major & Pre-Health</div>
-                <div class="stat-desc">Cheat sheets & guidance</div>
+                <div class="stat-number blue">31</div>
+                <div class="stat-title">Major & LAC Resources</div>
+                <div class="stat-desc">Cheat sheets & requirements</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number orange">78</div>
-                <div class="stat-title">Total Resources</div>
-                <div class="stat-desc">Searchable database</div>
+                <div class="stat-number orange">16</div>
+                <div class="stat-title">Academic Plans</div>
+                <div class="stat-desc">Four-year course plans</div>
             </div>
         </div>
     </div>
@@ -765,213 +760,165 @@
             searchText: 'AP credit advanced placement policy maximum 30 credits extra institutional pre-health biology chemistry mathematics'
         });
 
-        // ACADEMIC PLANS (with detailed semester sequencing)
+        // ACADEMIC PLANS (16 sample plans)
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Biology B.A. Plan',
-            year1: 'Fall: BIO 121/122, CHE 106/107. Spring: BIO 123/224, CHE 116/117',
-            year2: 'Fall: BIO 322. Spring: BIO 323, BIO 324. CHE 275/276 OR MAT 285/221 either year',
-            year3: 'BIO 300+ electives (must include 1 lab)',
-            year4: 'BIO 300+ electives',
+            courses: 'BIO 121/122, BIO 123/224, BIO 322, BIO 323, BIO 324, CHE 106/107, CHE 116/117, CHE 275/276 OR MAT 285/221, 4 BIO 300+ (1 lab)',
             credits: '120 credits total',
-            keyNotes: '9 upper division credits minimum; Organic Chem OR Calc/Stats required; BIO 322/323/324 by end of sophomore year',
-            searchText: 'biology BA bachelor arts BIO 121 BIO 122 BIO 123 BIO 224 BIO 322 BIO 323 BIO 324 CHE chemistry organic MAT math calculus statistics lab upper division four year plan semester fall spring'
+            keyNotes: '9 upper division credits minimum; Organic Chem OR Calc/Stats required',
+            searchText: 'biology BA bachelor arts BIO 121 BIO 122 BIO 123 BIO 224 BIO 322 BIO 323 BIO 324 CHE chemistry organic MAT math calculus statistics lab upper division four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Biology B.S. Plan',
-            year1: 'Fall: BIO 121/122, CHE 106/107. Spring: BIO 123/224, CHE 116/117',
-            year2: 'Fall: BIO 322, CHE 275/276. Spring: BIO 323, BIO 324, CHE 325/326. MAT 221 either semester',
-            year3: 'BIO 300+ electives with concentration focus (must include labs)',
-            year4: 'BIO 300+ electives completing concentration',
+            courses: 'BIO 121/122, BIO 123/224, BIO 322, BIO 323, BIO 324, CHE 106/107, CHE 116/117, CHE 275/276, MAT 221, 6 BIO 300+ with concentration',
             credits: '120 credits total',
-            keyNotes: '18 upper division credits; Organic Chem AND Calc/Stats required; Concentration mandatory; BIO 322/323/324 by end of sophomore year',
-            searchText: 'biology BS bachelor science BIO 121 BIO 122 BIO 123 BIO 224 BIO 322 BIO 323 BIO 324 CHE chemistry organic MAT 221 math calculus concentration upper division four year plan semester fall spring'
+            keyNotes: '18 upper division credits; Organic Chem AND Calc/Stats required; Concentration mandatory',
+            searchText: 'biology BS bachelor science BIO 121 BIO 122 BIO 123 BIO 224 BIO 322 BIO 323 BIO 324 CHE chemistry organic MAT 221 math calculus concentration upper division four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Psychology B.A. Plan',
-            year1: 'Fall: PSY 205, MAT 121. Spring: PSY 374',
-            year2: 'Fall: PSY 322. Spring: PSY 252, PSY 213',
-            year3: 'Fall: PSY 335. Spring: PSY 395, PSY Advanced Elective',
-            year4: 'PSY Electives (4 total across Years 3-4)',
+            courses: 'PSY 205, PSY 374, MAT 121, PSY 322, PSY 252, PSY 213, PSY 335, PSY 395, PSY Advanced Elective, 4 PSY Electives',
             credits: '120 credits total',
             keyNotes: '30 PSY credits (18 upper division); Statistics sequence required; Complete PSY 213 by sophomore year',
-            searchText: 'psychology BA bachelor arts PSY 205 PSY 374 PSY 322 PSY 252 PSY 213 PSY 335 PSY 395 MAT 121 statistics electives upper division four year plan semester fall spring'
+            searchText: 'psychology BA bachelor arts PSY 205 PSY 374 PSY 322 PSY 252 PSY 213 PSY 335 PSY 395 MAT 121 statistics electives upper division four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Psychology B.S. Plan',
-            year1: 'Fall: PSY 205, MAT 121, Natural Science course. Spring: PSY 374, Natural Science course with lab',
-            year2: 'Fall: PSY 322, Natural Science course. Spring: PSY 252, PSY 213, Natural Science course',
-            year3: 'Fall: PSY 335, PSY Lab-Lecture Combo. Spring: PSY 395, PSY Lab-Lecture Combo',
-            year4: 'PSY 300+ electives (2 courses)',
+            courses: 'PSY 205, PSY 374, PSY 322, PSY 252, PSY 213, MAT 121, Natural Science Sequence (2 courses), PSY 335, PSY 395, Two PSY Lab-Lecture Combos, 3 Natural Science courses',
             credits: '120 credits total',
-            keyNotes: '30 PSY credits (30 upper division Fall 23+); Lab-Lecture Sequence (6 cr); Natural Science (8 cr); Complete PSY 213 by sophomore year',
-            searchText: 'psychology BS bachelor science PSY 205 PSY 374 PSY 322 PSY 252 PSY 213 PSY 335 PSY 395 lab lecture natural science upper division four year plan semester fall spring'
+            keyNotes: '30 PSY credits (30 upper division Fall 23+); Lab-Lecture Sequence (6 cr); Natural Science (8 cr)',
+            searchText: 'psychology BS bachelor science PSY 205 PSY 374 PSY 322 PSY 252 PSY 213 PSY 335 PSY 395 lab lecture natural science upper division four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Economics B.A. Plan',
-            year1: 'Fall: ECN 101. Spring: ECN 102/203, MAT 284',
-            year2: 'Fall: ECN 301. Spring: ECN 302',
-            year3: 'Fall: ECN 422. Spring: ECN 300+ Elective',
-            year4: 'ECN 400+ Electives (2 total)',
+            courses: 'ECN 101, ECN 102/203, MAT 284, ECN 301, ECN 302, ECN 422, 3 ECN 300+ Electives (2 must be 400+)',
             credits: '120 credits total',
-            keyNotes: 'MAT 284 required with C or higher; Social Science sequence: ECN 101→ECN 102/203→ECN 302',
-            searchText: 'economics BA bachelor arts ECN 101 ECN 102 ECN 203 ECN 301 ECN 302 ECN 422 MAT 284 electives four year plan semester fall spring'
+            keyNotes: 'MAT 284 required with C or higher; Social Science sequence: ECN 101 to ECN 102/203 to ECN 302',
+            searchText: 'economics BA bachelor arts ECN 101 ECN 102 ECN 203 ECN 301 ECN 302 ECN 422 MAT 284 electives four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Economics B.S. Plan',
-            year1: 'Fall: ECN 101, MAT 295. Spring: ECN 102/203, MAT 296',
-            year2: 'Fall: ECN 311. Spring: ECN 302',
-            year3: 'Fall: ECN 505. Spring: ECN 521, ECN 522, ECN 300+ Elective',
-            year4: 'ECN 400+ Electives (3 total)',
+            courses: 'ECN 101, ECN 102/203, MAT 295, MAT 296, ECN 311, ECN 302, ECN 505, ECN 521, ECN 522, 4 ECN 300+ (3 must be 400+)',
             credits: '120 credits total',
-            keyNotes: 'MAT 295+296 with C average required; Much more math-intensive than B.A.; ECN 311/505/521/522 required',
-            searchText: 'economics BS bachelor science ECN 101 ECN 102 ECN 203 ECN 311 ECN 302 ECN 505 ECN 521 ECN 522 MAT 295 MAT 296 calculus four year plan semester fall spring'
+            keyNotes: 'MAT 295+296 with C average required; Much more math-intensive than B.A.',
+            searchText: 'economics BS bachelor science ECN 101 ECN 102 ECN 203 ECN 311 ECN 302 ECN 505 ECN 521 ECN 522 MAT 295 MAT 296 calculus four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Political Science B.A. Plan',
-            year1: 'Fall: PSC 121. Spring: PSC 100-199',
-            year2: 'Fall: PSC 202. Spring: PSC International Elective, PSC 300+ Cluster Course',
-            year3: 'PSC 300+ Cluster Courses (3 more) and PSC 300+ Electives (2)',
-            year4: 'PSC 300+ Electives (2 more)',
+            courses: 'PSC 121, PSC 100-199, PSC 202, PSC International Elective, 4 PSC 300+ Cluster Courses, 4 PSC 300+ Electives',
             credits: '120 credits total',
-            keyNotes: 'Must declare cluster/concentration (unlocks courses in DegreeWorks); PSC 202 counts as quantitative; PSC 121 early',
-            searchText: 'political science BA bachelor arts PSC 121 PSC 202 cluster concentration degreeworks international elective upper division four year plan semester fall spring'
+            keyNotes: 'Must declare cluster/concentration (unlocks courses in DegreeWorks); PSC 202 counts as quantitative',
+            searchText: 'political science BA bachelor arts PSC 121 PSC 202 cluster concentration degreeworks international elective upper division four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Chemistry B.A. (Chemistry Track) Plan',
-            year1: 'Fall: CHE 106/107, MAT 285/295. Spring: CHE 116/117, MAT 286/296',
-            year2: 'Fall: CHE 275/276, PHY 211/221. Spring: CHE 325/326, PHY 212/222',
-            year3: 'Fall: CHE 346/347. Spring: CHE 356/357',
-            year4: 'Fall: CHE 335. Spring: CHE 444, Chemistry Track Course',
+            courses: 'CHE 106/107, CHE 116/117, CHE 275/276, CHE 325/326, MAT 285/295, MAT 286/296, PHY 211/221, PHY 212/222, CHE 346/347, CHE 356/357, CHE 335/444, Chemistry Track Course',
             credits: '120 credits total',
-            keyNotes: 'Complete calc/physics by end of Year 2; Multiple tracks available (Biological, Medicinal, Chemistry)',
-            searchText: 'chemistry BA bachelor arts CHE 106 CHE 116 CHE 275 CHE 325 CHE 346 CHE 356 MAT physics organic physical analytical four year plan semester fall spring'
+            keyNotes: 'Complete calc/physics by end of Year 2; Multiple tracks available',
+            searchText: 'chemistry BA bachelor arts CHE 106 CHE 116 CHE 275 CHE 325 CHE 346 CHE 356 MAT physics organic physical analytical four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Mathematics B.A. Plan',
-            year1: 'Fall: MAT 295. Spring: MAT 296',
-            year2: 'Fall: MAT 331. Spring: MAT 397, MAT 375',
-            year3: 'Fall: MAT 412. Spring: MAT 400+ elective',
-            year4: 'MAT 400+ electives (4 more)',
+            courses: 'MAT 295, MAT 296, MAT 331, MAT 397, MAT 375, MAT 412, 5 MAT 400+ electives',
             credits: '120 credits total',
-            keyNotes: 'Natural Science/Math divisional: MAT 295→296→331; 5 MAT 400+ electives total',
-            searchText: 'mathematics BA bachelor arts MAT 295 MAT 296 MAT 331 MAT 397 MAT 375 MAT 412 calculus linear algebra abstract algebra four year plan semester fall spring'
+            keyNotes: 'Natural Science/Math divisional: MAT 295 to MAT 296 to MAT 331',
+            searchText: 'mathematics BA bachelor arts MAT 295 MAT 296 MAT 331 MAT 397 MAT 375 MAT 412 calculus linear algebra abstract algebra four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'English and Textual Studies B.A. Plan',
-            year1: 'Fall: ENG 100-199. Spring: ENG 242',
-            year2: 'ENG 300+ courses (2)',
-            year3: 'ENG 300+ courses (3)',
-            year4: 'ENG 300+ courses (3)',
-            credits: '120 credits total (8 ENG 300+ total)',
-            keyNotes: 'Humanities sequence: ENG 100-199→ENG 242→ENG 300+',
-            searchText: 'english textual studies BA bachelor arts ENG 242 literature writing upper division four year plan semester fall spring'
+            courses: 'ENG 100-199, ENG 242, 8 ENG 300+ courses',
+            credits: '120 credits total',
+            keyNotes: 'Humanities sequence: ENG 100-199 to ENG 242 to ENG 300+',
+            searchText: 'english textual studies BA bachelor arts ENG 242 literature writing upper division four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'History B.A. Plan',
-            year1: 'Foundation Sequence (2 courses)',
-            year2: 'Fall: HST Elective. Spring: HST 300+',
-            year3: 'Fall: HST 301. Spring: HST 300+ (3 more across Year 3)',
-            year4: 'Fall: HST 401. Spring: HST 300+ (2 more)',
+            courses: 'Foundation Sequence (2 courses), HST 301, HST 401, 5 HST 300+ electives',
             credits: '120 credits total (10 HST courses total)',
-            keyNotes: 'HST 301 is research methods; HST 401 is capstone seminar; 5 HST 300+ electives required',
-            searchText: 'history BA bachelor arts HST 301 HST 401 foundation sequence research methods capstone upper division four year plan semester fall spring'
+            keyNotes: 'HST 301 is research methods; HST 401 is capstone seminar',
+            searchText: 'history BA bachelor arts HST 301 HST 401 foundation sequence research methods capstone upper division four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Sociology B.A. Plan',
-            year1: 'Fall: SOC 101. Spring: SOC 200+',
-            year2: 'Fall: SOC 318. Spring: SOC 300+',
-            year3: 'Fall: SOC/WGS 319. Spring: SOC 300+ (3 courses across Year 3)',
-            year4: 'Fall: SOC 406. Spring: SOC 300+ (2 more)',
+            courses: 'SOC 101, SOC 200+, SOC 318, SOC 300+, SOC/WGS 319, 3 SOC 300+, SOC 406, 2 SOC 300+',
             credits: '120 credits total',
-            keyNotes: 'Social Science divisional: SOC 101→SOC 248/281→SOC 300+; SOC 406 is capstone',
-            searchText: 'sociology BA bachelor arts SOC 101 SOC 318 SOC 319 SOC 406 capstone upper division four year plan semester fall spring'
+            keyNotes: 'Social Science divisional: SOC 101 to SOC 248/281 to SOC 300+; SOC 406 is capstone',
+            searchText: 'sociology BA bachelor arts SOC 101 SOC 318 SOC 319 SOC 406 capstone upper division four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'International Relations B.A. Plan',
-            year1: 'Fall: PSC 124/139, Language 101. Spring: Language 102, ECN 101/203',
-            year2: 'Fall: Language 201, MAX 132 or ANT 185, Intro Research Methods. Spring: Language 202, Concentration 1 Course',
-            year3: 'Advanced Research Methods, Concentration 1 & 2 courses (4 total)',
-            year4: 'Capstone Seminar, Concentration courses (2 more)',
+            courses: 'PSC 124/139, Language through 201, ECN 101/203, MAX 132 or ANT 185, Intro Research Methods, Advanced Research Methods, Capstone, 6 Concentration courses',
             credits: '120 credits total',
-            keyNotes: 'Language through 201 required; Two concentration areas; Research methods required',
-            searchText: 'international relations BA bachelor arts PSC 124 PSC 139 ECN language MAX 132 ANT 185 research methods capstone concentration four year plan semester fall spring'
+            keyNotes: 'Language through 201 required; Two concentration areas',
+            searchText: 'international relations BA bachelor arts PSC 124 PSC 139 ECN language MAX 132 ANT 185 research methods capstone concentration four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Philosophy B.A. Plan',
-            year1: 'PHI 107/109/125/171/175/191/192 (3 courses from this group)',
-            year2: 'PHI Ancient, PHI Modern',
-            year3: 'PHI Logic, PHI Value Theory, PHI Electives (2)',
-            year4: 'PHI Electives (2 more)',
+            courses: 'PHI 107/109/125/171/175/191/192 (3 courses), PHI Ancient, PHI Modern, PHI Logic, PHI Value Theory, 4 PHI Electives',
             credits: '120 credits total (10 PHI courses)',
-            keyNotes: 'Covers ancient, modern, logic, and value theory areas; Balance foundation and upper-level courses',
-            searchText: 'philosophy BA bachelor arts PHI 107 PHI 109 PHI 125 PHI 171 PHI 175 PHI 191 PHI 192 ancient modern logic ethics value theory four year plan semester'
+            keyNotes: 'Covers ancient, modern, logic, and value theory areas',
+            searchText: 'philosophy BA bachelor arts PHI 107 PHI 109 PHI 125 PHI 171 PHI 175 PHI 191 PHI 192 ancient modern logic ethics value theory four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Anthropology B.A. Plan',
-            year1: 'Fall: ANT 111. Spring: ANT 131',
-            year2: 'Fall: ANT 141/145, Area Focus Course. Spring: Anthropological Methods',
-            year3: 'Fall: ANT 311. Spring: ANT Electives (2)',
-            year4: 'ANT Electives (4 more)',
-            credits: '120 credits total (6 ANT Electives total)',
-            keyNotes: 'Covers cultural, biological, and archaeological anthropology; Area focus required; ANT 311 is capstone',
-            searchText: 'anthropology BA bachelor arts ANT 111 ANT 131 ANT 141 ANT 145 ANT 311 cultural biological archaeological methods area focus four year plan semester fall spring'
+            courses: 'ANT 111, ANT 131, ANT 141/145, Area Focus Course, Anthropological Methods, ANT 311, 6 ANT Electives',
+            credits: '120 credits total',
+            keyNotes: 'Covers cultural, biological, and archaeological anthropology; Area focus required',
+            searchText: 'anthropology BA bachelor arts ANT 111 ANT 131 ANT 141 ANT 145 ANT 311 cultural biological archaeological methods area focus four year plan'
         });
 
         resources.push({
             type: 'plan',
             category: 'Academic Plan',
             title: 'Communication Sciences and Disorders B.S. Plan',
-            year1: 'Fall: CSD 212. Spring: BIO 121/122 or 221',
-            year2: 'Fall: CSD 315, MAT 121/221. Spring: CSD 316, CSD 325, CSD 422, CHE 106 or PHY 101, Behavioral Science',
-            year3: 'Fall: CSD 451, CSD 345. Spring: CSD 429, CSD 409',
-            year4: 'Fall: CSD 435, CSD 450. Spring: CSD 477, CSD Electives',
+            courses: 'CSD 212, BIO 121/122 or 221, CSD 315, CSD 316, CSD 325, CSD 422, MAT 121/221, CHE 106 or PHY 101, CSD 451, CSD 429, CSD 345, CSD 409, CSD 435, CSD 450, CSD 477',
             credits: '120 credits total',
-            keyNotes: 'Sequence-heavy major with specific course progressions; Lab science required; Complete CSD 315/316/325 sophomore year',
-            searchText: 'communication sciences disorders CSD speech language hearing BS bachelor science CSD 212 CSD 315 CSD 316 CSD 325 CSD 422 CSD 451 four year plan semester fall spring'
+            keyNotes: 'Sequence-heavy major with specific course progressions; Lab science required',
+            searchText: 'communication sciences disorders CSD speech language hearing BS bachelor science CSD 212 CSD 315 CSD 316 CSD 325 CSD 422 CSD 451 four year plan'
         });
 
         let currentFilter = 'all';
@@ -1032,7 +979,6 @@
             if (resource.type === 'major') badgeClass = 'badge-major';
             if (resource.type === 'lac') badgeClass = 'badge-lac';
             if (resource.type === 'plan') badgeClass = 'badge-plan';
-            if (resource.type === 'prehealth') badgeClass = 'badge-prehealth';
             
             let content = '<div class="result-card"><div class="result-header"><div class="result-title">' + resource.title + '</div><span class="result-badge ' + badgeClass + '">' + resource.category + '</span></div><div class="result-content">';
             
@@ -1086,32 +1032,8 @@
                 if (resource.divisions) content += '<div class="result-row"><span class="result-label">Divisions:</span> <span class="result-value">' + resource.divisions + '</span></div>';
                 if (resource.maximum) content += '<div class="result-row"><span class="result-label">Maximum:</span> <span class="result-value">' + resource.maximum + '</span></div>';
                 if (resource.preHealth) content += '<div class="result-row"><span class="result-label">Pre-Health Note:</span> <span class="result-value">' + resource.preHealth + '</span></div>';
-            } else if (resource.type === 'prehealth') {
-                if (resource.question) content += '<div class="result-row"><span class="result-label">Question:</span> <span class="result-value">' + resource.question + '</span></div>';
-                if (resource.answer) content += '<div class="result-row"><span class="result-label">Answer:</span> <span class="result-value">' + resource.answer + '</span></div>';
-                if (resource.myth) content += '<div class="result-row"><span class="result-label">Myth:</span> <span class="result-value">' + resource.myth + '</span></div>';
-                if (resource.truth) content += '<div class="result-row"><span class="result-label">Truth:</span> <span class="result-value">' + resource.truth + '</span></div>';
-                if (resource.data) content += '<div class="result-row"><span class="result-label">Data:</span> <span class="result-value">' + resource.data + '</span></div>';
-                if (resource.overview) content += '<div class="result-row"><span class="result-label">Overview:</span> <span class="result-value">' + resource.overview + '</span></div>';
-                if (resource.benchmarks) content += '<div class="result-row"><span class="result-label">Benchmarks:</span> <span class="result-value">' + resource.benchmarks + '</span></div>';
-                if (resource.syracuseData) content += '<div class="result-row"><span class="result-label">Syracuse Data:</span> <span class="result-value">' + resource.syracuseData + '</span></div>';
-                if (resource.courses) content += '<div class="result-row"><span class="result-label">Courses:</span> <span class="result-value">' + resource.courses + '</span></div>';
-                if (resource.note) content += '<div class="result-row"><span class="result-label">Note:</span> <span class="result-value">' + resource.note + '</span></div>';
-                if (resource.importance) content += '<div class="result-row"><span class="result-label">Importance:</span> <span class="result-value">' + resource.importance + '</span></div>';
-                if (resource.activities) content += '<div class="result-row"><span class="result-label">Activities:</span> <span class="result-value">' + resource.activities + '</span></div>';
-                if (resource.requirement) content += '<div class="result-row"><span class="result-label">Requirement:</span> <span class="result-value">' + resource.requirement + '</span></div>';
-                if (resource.opportunities) content += '<div class="result-row"><span class="result-label">Opportunities:</span> <span class="result-value">' + resource.opportunities + '</span></div>';
-                if (resource.factors) content += '<div class="result-row"><span class="result-label">Factors:</span> <span class="result-value">' + resource.factors + '</span></div>';
-                if (resource.holistic) content += '<div class="result-row"><span class="result-label">Holistic Review:</span> <span class="result-value">' + resource.holistic + '</span></div>';
-                if (resource.services) content += '<div class="result-row"><span class="result-label">Services:</span> <span class="result-value">' + resource.services + '</span></div>';
-                if (resource.contact) content += '<div class="result-row" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;"><span class="result-label">Contact:</span> <span class="result-value">' + resource.contact + '</span></div>';
-                if (resource.advice) content += '<div class="result-row"><span class="result-label">Advice:</span> <span class="result-value">' + resource.advice + '</span></div>';
-                if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">View Full Page →</a>';
             } else if (resource.type === 'plan') {
-                if (resource.year1) content += '<div class="result-row"><span class="result-label">Year 1:</span> <span class="result-value">' + resource.year1 + '</span></div>';
-                if (resource.year2) content += '<div class="result-row"><span class="result-label">Year 2:</span> <span class="result-value">' + resource.year2 + '</span></div>';
-                if (resource.year3) content += '<div class="result-row"><span class="result-label">Year 3:</span> <span class="result-value">' + resource.year3 + '</span></div>';
-                if (resource.year4) content += '<div class="result-row"><span class="result-label">Year 4:</span> <span class="result-value">' + resource.year4 + '</span></div>';
+                if (resource.courses) content += '<div class="result-row"><span class="result-label">Course Sequence:</span> <span class="result-value">' + resource.courses + '</span></div>';
                 if (resource.credits) content += '<div class="result-row"><span class="result-label">Total Credits:</span> <span class="result-value">' + resource.credits + '</span></div>';
                 if (resource.keyNotes) content += '<div class="result-row"><span class="result-label">Key Notes:</span> <span class="result-value">' + resource.keyNotes + '</span></div>';
             }
