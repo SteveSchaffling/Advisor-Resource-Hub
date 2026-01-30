@@ -1610,6 +1610,29 @@
                     if (resource.types) content += '<div class="result-row"><span class="result-label">Types:</span> <span class="result-value">' + resource.types + '</span></div>';
                     if (resource.timing) content += '<div class="result-row"><span class="result-label">Timing:</span> <span class="result-value">' + resource.timing + '</span></div>';
                     if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
+               } else if (resource.type === 'international') {
+                if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
+                
+                // PDF EMBED for international resources with PDFs
+                if (resource.hasPdf && resource.pdfUrl) {
+                    content += '<div class="result-row" style="margin-top: 1.5rem;"><iframe src="https://docs.google.com/viewer?url=' + encodeURIComponent(resource.pdfUrl) + '&embedded=true" width="100%" height="600px" style="border: 1px solid #d1d5db; border-radius: 8px;"></iframe></div>';
+                }
+                
+                // Show other fields
+                if (resource.keyTopics) content += '<div class="result-row"><span class="result-label">Key Topics:</span> <span class="result-value">' + resource.keyTopics + '</span></div>';
+                if (resource.advisorUse) content += '<div class="result-row"><span class="result-label">Advisor Use:</span> <span class="result-value">' + resource.advisorUse + '</span></div>';
+                if (resource.scisReferral) content += '<div class="result-row"><span class="result-label">SCIS Referral:</span> <span class="result-value">' + resource.scisReferral + '</span></div>';
+                if (resource.advisorApproach) content += '<div class="result-row"><span class="result-label">Advisor Approach:</span> <span class="result-value">' + resource.advisorApproach + '</span></div>';
+                if (resource.resources) content += '<div class="result-row"><span class="result-label">Resources:</span> <span class="result-value">' + resource.resources + '</span></div>';
+                if (resource.recognition) content += '<div class="result-row"><span class="result-label">Recognition:</span> <span class="result-value">' + resource.recognition + '</span></div>';
+                if (resource.contact) content += '<div class="result-row"><span class="result-label">Contact:</span> <span class="result-value">' + resource.contact + '</span></div>';
+                if (resource.studentGuidance) content += '<div class="result-row"><span class="result-label">Student Guidance:</span> <span class="result-value">' + resource.studentGuidance + '</span></div>';
+                if (resource.advisorRole) content += '<div class="result-row"><span class="result-label">Advisor Role:</span> <span class="result-value">' + resource.advisorRole + '</span></div>';
+                if (resource.employerCommunication) content += '<div class="result-row"><span class="result-label">Employer Communication:</span> <span class="result-value">' + resource.employerCommunication + '</span></div>';
+                if (resource.careerResources) content += '<div class="result-row"><span class="result-label">Career Resources:</span> <span class="result-value">' + resource.careerResources + '</span></div>';
+                if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
+            }
+                 
                 }
             }
             
@@ -1619,6 +1642,7 @@
     </script>
 </body>
 </html>
+
 
 
 
