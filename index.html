@@ -187,7 +187,12 @@
             background-color: #fce7f3;
             color: #be185d;
         }
-       
+
+        .badge-international {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+      
         .result-content {
             font-size: 0.875rem;
         }
@@ -1500,6 +1505,7 @@
             if (resource.type === 'lac') badgeClass = 'badge-lac';
             if (resource.type === 'plan') badgeClass = 'badge-plan';
             if (resource.type === 'career-resource') badgeClass = 'badge-career-resource';
+            if (resource.type === 'international') badgeClass = 'badge-international';
             
             let content = '<div class="result-card"><div class="result-header"><div class="result-title">' + resource.title + '</div><span class="result-badge ' + badgeClass + '">' + resource.category + '</span></div><div class="result-content">';
             
@@ -1613,6 +1619,7 @@
     </script>
 </body>
 </html>
+
 
 
 
