@@ -182,7 +182,12 @@
             background-color: #fef3c7;
             color: #d97706;
         }
-        
+
+        .badge-career-resource {
+            background-color: #fce7f3;
+            color: #be185d;
+        }
+       
         .result-content {
             font-size: 0.875rem;
         }
@@ -1491,6 +1496,7 @@
             if (resource.type === 'major') badgeClass = 'badge-major';
             if (resource.type === 'lac') badgeClass = 'badge-lac';
             if (resource.type === 'plan') badgeClass = 'badge-plan';
+            if (resource.type === 'career-resource') badgeClass = 'badge-career-resource';
             
             let content = '<div class="result-card"><div class="result-header"><div class="result-title">' + resource.title + '</div><span class="result-badge ' + badgeClass + '">' + resource.category + '</span></div><div class="result-content">';
             
@@ -1551,6 +1557,42 @@
                 if (resource.year4) content += '<div class="result-row"><span class="result-label">Year 4:</span> <span class="result-value">' + resource.year4 + '</span></div>';
                 if (resource.credits) content += '<div class="result-row"><span class="result-label">Total Credits:</span> <span class="result-value">' + resource.credits + '</span></div>';
                 if (resource.keyNotes) content += '<div class="result-row"><span class="result-label">Key Notes:</span> <span class="result-value">' + resource.keyNotes + '</span></div>';
+            } else if (resource.type === 'career-resource') {
+                if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
+                if (resource.login) content += '<div class="result-row"><span class="result-label">Login:</span> <span class="result-value">' + resource.login + '</span></div>';
+                if (resource.contact) content += '<div class="result-row"><span class="result-label">Contact:</span> <span class="result-value">' + resource.contact + '</span></div>';
+                if (resource.keyFeatures) content += '<div class="result-row"><span class="result-label">Key Features:</span> <span class="result-value">' + resource.keyFeatures + '</span></div>';
+                if (resource.studentHelp) content += '<div class="result-row"><span class="result-label">How to Help Students:</span> <span class="result-value">' + resource.studentHelp + '</span></div>';
+                if (resource.casMaxLabels) content += '<div class="result-row"><span class="result-label">CAS|MAX Labels:</span> <span class="result-value">' + resource.casMaxLabels + '</span></div>';
+                if (resource.searchFeatures) content += '<div class="result-row"><span class="result-label">Search Features:</span> <span class="result-value">' + resource.searchFeatures + '</span></div>';
+                if (resource.advisorTips) content += '<div class="result-row"><span class="result-label">Advisor Tips:</span> <span class="result-value">' + resource.advisorTips + '</span></div>';
+                if (resource.workflow) content += '<div class="result-row"><span class="result-label">Workflow:</span> <span class="result-value">' + resource.workflow + '</span></div>';
+                if (resource.conversationStarters) content += '<div class="result-row"><span class="result-label">Conversation Starters:</span> <span class="result-value">' + resource.conversationStarters + '</span></div>';
+                if (resource.process) content += '<div class="result-row"><span class="result-label">Process:</span> <span class="result-value">' + resource.process + '</span></div>';
+                if (resource.studentPopulations) content += '<div class="result-row"><span class="result-label">Student Populations:</span> <span class="result-value">' + resource.studentPopulations + '</span></div>';
+                if (resource.academicHomework) content += '<div class="result-row"><span class="result-label">Academic: Exploring Homework:</span> <span class="result-value">' + resource.academicHomework + '</span></div>';
+                if (resource.careerExploringHomework) content += '<div class="result-row"><span class="result-label">Career: Exploring Homework:</span> <span class="result-value">' + resource.careerExploringHomework + '</span></div>';
+                if (resource.careerSearchingHomework) content += '<div class="result-row"><span class="result-label">Career: Searching Homework:</span> <span class="result-value">' + resource.careerSearchingHomework + '</span></div>';
+                if (resource.speednotes) content += '<div class="result-row"><span class="result-label">Speednotes:</span> <span class="result-value">' + resource.speednotes + '</span></div>';
+                if (resource.toolsReferenced) content += '<div class="result-row"><span class="result-label">Tools Referenced:</span> <span class="result-value">' + resource.toolsReferenced + '</span></div>';
+                if (resource.allRoadmaps) content += '<div class="result-row"><span class="result-label">All Roadmaps:</span> <span class="result-value">' + resource.allRoadmaps + '</span></div>';
+                if (resource.sectors) content += '<div class="result-row"><span class="result-label">Sectors:</span> <span class="result-value">' + resource.sectors + '</span></div>';
+                if (resource.handshakeIntegration) content += '<div class="result-row"><span class="result-label">Handshake Integration:</span> <span class="result-value">' + resource.handshakeIntegration + '</span></div>';
+                if (resource.qualityCriteria) content += '<div class="result-row"><span class="result-label">Quality Criteria:</span> <span class="result-value">' + resource.qualityCriteria + '</span></div>';
+                if (resource.studentUse) content += '<div class="result-row"><span class="result-label">Student Use:</span> <span class="result-value">' + resource.studentUse + '</span></div>';
+                if (resource.advisorUse) content += '<div class="result-row"><span class="result-label">Advisor Use:</span> <span class="result-value">' + resource.advisorUse + '</span></div>';
+                if (resource.branding) content += '<div class="result-row"><span class="result-label">Branding:</span> <span class="result-value">' + resource.branding + '</span></div>';
+                if (resource.purpose) content += '<div class="result-row"><span class="result-label">Purpose:</span> <span class="result-value">' + resource.purpose + '</span></div>';
+                if (resource.bestFor) content += '<div class="result-row"><span class="result-label">Best For:</span> <span class="result-value">' + resource.bestFor + '</span></div>';
+                if (resource.advisorRole) content += '<div class="result-row"><span class="result-label">Advisor Role:</span> <span class="result-value">' + resource.advisorRole + '</span></div>';
+                if (resource.followUp) content += '<div class="result-row"><span class="result-label">Follow-Up:</span> <span class="result-value">' + resource.followUp + '</span></div>';
+                if (resource.features) content += '<div class="result-row"><span class="result-label">Features:</span> <span class="result-value">' + resource.features + '</span></div>';
+                if (resource.homework) content += '<div class="result-row"><span class="result-label">Homework:</span> <span class="result-value">' + resource.homework + '</span></div>';
+                if (resource.importance) content += '<div class="result-row"><span class="result-label">Importance:</span> <span class="result-value">' + resource.importance + '</span></div>';
+                if (resource.advisorGuidance) content += '<div class="result-row"><span class="result-label">Advisor Guidance:</span> <span class="result-value">' + resource.advisorGuidance + '</span></div>';
+                if (resource.types) content += '<div class="result-row"><span class="result-label">Types:</span> <span class="result-value">' + resource.types + '</span></div>';
+                if (resource.timing) content += '<div class="result-row"><span class="result-label">Timing:</span> <span class="result-value">' + resource.timing + '</span></div>';
+                if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
             }
             
             content += '</div></div>';
@@ -1558,6 +1600,7 @@
         }
     </script>
 </body>
+
 
 
 
