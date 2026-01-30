@@ -192,6 +192,11 @@
             background-color: #dbeafe;
             color: #1e40af;
         }
+
+        .badge-pre-health {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
       
         .result-content {
             font-size: 0.875rem;
@@ -1445,6 +1450,21 @@
             careerResources: 'Career Immersion trips, Alumni Connections, Handshake, VMock, LinkedIn optimization',
             searchText: 'international student employment guide work authorization CPT OPT on-campus jobs F-1 visa STEM extension H-1B sponsorship resume interview job search career development immigration SCIS employer communication'
         });
+
+        // PRE-HEALTH RESOURCES
+        resources.push({
+            type: 'pre-health',
+            category: 'Pre-Health Resource',
+            title: 'Minimums to Declare Pre-Health',
+            description: 'Requirements students must meet to officially declare Pre-Health advising track in CAS|MAX',
+            requirements: 'Declare a major, Complete one year at Syracuse University, Have a cumulative Syracuse University GPA of 3.0, Complete minimum of 8 credits of BCPM coursework with minimum 3.0 BCPM GPA at Syracuse University',
+            bcpmDefinition: 'BCPM = Biology, Chemistry, Physics, or Math coursework',
+            timing: 'Must complete one full year before declaring',
+            gpaRequirements: '3.0 cumulative GPA minimum, 3.0 BCPM GPA minimum',
+            advisorNotes: 'Students must have declared a major first, Monitor BCPM GPA separately from overall GPA, 8 credits typically = 2 lab science courses (BIO 121/122 + CHE 106/107 or similar)',
+            commonQuestions: 'Can I declare pre-health as a freshman? (No, must complete one year first), What counts as BCPM? (Biology, Chemistry, Physics, Math courses), Can I declare pre-health without a major? (No, major declaration required first)',
+            searchText: 'pre-health declaration requirements minimums declare GPA 3.0 BCPM biology chemistry physics math one year major cumulative advisor pre-med pre-dental pre-vet eligibility'
+        });
         
         let currentFilter = 'all';
 
@@ -1506,6 +1526,7 @@
             if (resource.type === 'plan') badgeClass = 'badge-plan';
             if (resource.type === 'career-resource') badgeClass = 'badge-career-resource';
             if (resource.type === 'international') badgeClass = 'badge-international';
+            if (resource.type === 'pre-health') badgeClass = 'badge-pre-health';
             
             let content = '<div class="result-card"><div class="result-header"><div class="result-title">' + resource.title + '</div><span class="result-badge ' + badgeClass + '">' + resource.category + '</span></div><div class="result-content">';
             
@@ -1641,13 +1662,24 @@
                 if (resource.careerResources) content += '<div class="result-row"><span class="result-label">Career Resources:</span> <span class="result-value">' + resource.careerResources + '</span></div>';
                 if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
             }
-            
+            } else if (resource.type === 'pre-health') {
+                if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
+                if (resource.requirements) content += '<div class="result-row"><span class="result-label">Requirements:</span> <span class="result-value">' + resource.requirements + '</span></div>';
+                if (resource.bcpmDefinition) content += '<div class="result-row"><span class="result-label">BCPM Definition:</span> <span class="result-value">' + resource.bcpmDefinition + '</span></div>';
+                if (resource.timing) content += '<div class="result-row"><span class="result-label">Timing:</span> <span class="result-value">' + resource.timing + '</span></div>';
+                if (resource.gpaRequirements) content += '<div class="result-row"><span class="result-label">GPA Requirements:</span> <span class="result-value">' + resource.gpaRequirements + '</span></div>';
+                if (resource.advisorNotes) content += '<div class="result-row"><span class="result-label">Advisor Notes:</span> <span class="result-value">' + resource.advisorNotes + '</span></div>';
+                if (resource.commonQuestions) content += '<div class="result-row"><span class="result-label">Common Questions:</span> <span class="result-value">' + resource.commonQuestions + '</span></div>';
+                if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
+            }
+
             content += '</div></div>';
             return content;
         }
     </script>
 </body>
 </html>
+
 
 
 
