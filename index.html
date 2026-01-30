@@ -183,6 +183,11 @@
             color: #d97706;
         }
         
+        .badge-prehealth {
+            background-color: #dcfce7;
+            color: #16a34a;
+        }
+        
         .result-content {
             font-size: 0.875rem;
         }
@@ -329,12 +334,12 @@
                 <div class="stat-desc">Complete career pathways</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number blue">6</div>
-                <div class="stat-title">Major Cheat Sheets</div>
-                <div class="stat-desc">Quick reference guides</div>
+                <div class="stat-number blue">18</div>
+                <div class="stat-title">Major & Pre-Health</div>
+                <div class="stat-desc">Cheat sheets & guidance</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number orange">66</div>
+                <div class="stat-number orange">78</div>
                 <div class="stat-title">Total Resources</div>
                 <div class="stat-desc">Searchable database</div>
             </div>
@@ -1027,6 +1032,7 @@
             if (resource.type === 'major') badgeClass = 'badge-major';
             if (resource.type === 'lac') badgeClass = 'badge-lac';
             if (resource.type === 'plan') badgeClass = 'badge-plan';
+            if (resource.type === 'prehealth') badgeClass = 'badge-prehealth';
             
             let content = '<div class="result-card"><div class="result-header"><div class="result-title">' + resource.title + '</div><span class="result-badge ' + badgeClass + '">' + resource.category + '</span></div><div class="result-content">';
             
@@ -1080,6 +1086,27 @@
                 if (resource.divisions) content += '<div class="result-row"><span class="result-label">Divisions:</span> <span class="result-value">' + resource.divisions + '</span></div>';
                 if (resource.maximum) content += '<div class="result-row"><span class="result-label">Maximum:</span> <span class="result-value">' + resource.maximum + '</span></div>';
                 if (resource.preHealth) content += '<div class="result-row"><span class="result-label">Pre-Health Note:</span> <span class="result-value">' + resource.preHealth + '</span></div>';
+            } else if (resource.type === 'prehealth') {
+                if (resource.question) content += '<div class="result-row"><span class="result-label">Question:</span> <span class="result-value">' + resource.question + '</span></div>';
+                if (resource.answer) content += '<div class="result-row"><span class="result-label">Answer:</span> <span class="result-value">' + resource.answer + '</span></div>';
+                if (resource.myth) content += '<div class="result-row"><span class="result-label">Myth:</span> <span class="result-value">' + resource.myth + '</span></div>';
+                if (resource.truth) content += '<div class="result-row"><span class="result-label">Truth:</span> <span class="result-value">' + resource.truth + '</span></div>';
+                if (resource.data) content += '<div class="result-row"><span class="result-label">Data:</span> <span class="result-value">' + resource.data + '</span></div>';
+                if (resource.overview) content += '<div class="result-row"><span class="result-label">Overview:</span> <span class="result-value">' + resource.overview + '</span></div>';
+                if (resource.benchmarks) content += '<div class="result-row"><span class="result-label">Benchmarks:</span> <span class="result-value">' + resource.benchmarks + '</span></div>';
+                if (resource.syracuseData) content += '<div class="result-row"><span class="result-label">Syracuse Data:</span> <span class="result-value">' + resource.syracuseData + '</span></div>';
+                if (resource.courses) content += '<div class="result-row"><span class="result-label">Courses:</span> <span class="result-value">' + resource.courses + '</span></div>';
+                if (resource.note) content += '<div class="result-row"><span class="result-label">Note:</span> <span class="result-value">' + resource.note + '</span></div>';
+                if (resource.importance) content += '<div class="result-row"><span class="result-label">Importance:</span> <span class="result-value">' + resource.importance + '</span></div>';
+                if (resource.activities) content += '<div class="result-row"><span class="result-label">Activities:</span> <span class="result-value">' + resource.activities + '</span></div>';
+                if (resource.requirement) content += '<div class="result-row"><span class="result-label">Requirement:</span> <span class="result-value">' + resource.requirement + '</span></div>';
+                if (resource.opportunities) content += '<div class="result-row"><span class="result-label">Opportunities:</span> <span class="result-value">' + resource.opportunities + '</span></div>';
+                if (resource.factors) content += '<div class="result-row"><span class="result-label">Factors:</span> <span class="result-value">' + resource.factors + '</span></div>';
+                if (resource.holistic) content += '<div class="result-row"><span class="result-label">Holistic Review:</span> <span class="result-value">' + resource.holistic + '</span></div>';
+                if (resource.services) content += '<div class="result-row"><span class="result-label">Services:</span> <span class="result-value">' + resource.services + '</span></div>';
+                if (resource.contact) content += '<div class="result-row" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;"><span class="result-label">Contact:</span> <span class="result-value">' + resource.contact + '</span></div>';
+                if (resource.advice) content += '<div class="result-row"><span class="result-label">Advice:</span> <span class="result-value">' + resource.advice + '</span></div>';
+                if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">View Full Page →</a>';
             } else if (resource.type === 'plan') {
                 if (resource.year1) content += '<div class="result-row"><span class="result-label">Year 1:</span> <span class="result-value">' + resource.year1 + '</span></div>';
                 if (resource.year2) content += '<div class="result-row"><span class="result-label">Year 2:</span> <span class="result-value">' + resource.year2 + '</span></div>';
