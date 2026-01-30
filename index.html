@@ -1559,35 +1559,35 @@
                 if (resource.issues) content += '<div class="result-row"><span class="result-label">Common Issues:</span> <span class="result-value">' + resource.issues + '</span></div>';
                 if (resource.contact) content += '<div class="result-row" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;"><span class="result-label">Contact:</span> <span class="result-value">' + resource.contact + '</span></div>';
             } else if (resource.type === 'lac') {
-                if (resource.requirement) content += '<div class="result-row"><span class="result-label">Requirement:</span> <span class="result-value">' + resource.requirement + '</span></div>';
-                if (resource.details) content += '<div class="result-row"><span class="result-label">Details:</span> <span class="result-value">' + resource.details + '</span></div>';
-                if (resource.courses) content += '<div class="result-row"><span class="result-label">Courses:</span> <span class="result-value">' + resource.courses + '</span></div>';
-                if (resource.languages) content += '<div class="result-row"><span class="result-label">Languages:</span> <span class="result-value">' + resource.languages + '</span></div>';
-                if (resource.firstCourse) content += '<div class="result-row"><span class="result-label">First Course Options:</span> <span class="result-value">' + resource.firstCourse + '</span></div>';
-                if (resource.secondCourse) content += '<div class="result-row"><span class="result-label">Second Course Options:</span> <span class="result-value">' + resource.secondCourse + '</span></div>';
-                if (resource.departments) content += '<div class="result-row"><span class="result-label">Departments:</span> <span class="result-value">' + resource.departments + '</span></div>';
-                if (resource.sequences) content += '<div class="result-row"><span class="result-label">Sequences:</span> <span class="result-value">' + resource.sequences + '</span></div>';
-                if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
-                if (resource.exemptions) content += '<div class="result-row"><span class="result-label">Exemptions:</span> <span class="result-value">' + resource.exemptions + '</span></div>';
-                if (resource.notes) content += '<div class="result-row"><span class="result-label">Notes:</span> <span class="result-value">' + resource.notes + '</span></div>';
-                if (resource.transferNote) content += '<div class="result-row"><span class="result-label">Transfer Note:</span> <span class="result-value">' + resource.transferNote + '</span></div>';
-                if (resource.overlap) content += '<div class="result-row"><span class="result-label">Overlap:</span> <span class="result-value">' + resource.overlap + '</span></div>';
-                if (resource.labNote) content += '<div class="result-row"><span class="result-label">Lab Requirement:</span> <span class="result-value">' + resource.labNote + '</span></div>';
-                if (resource.minorRule) content += '<div class="result-row"><span class="result-label">Minor:</span> <span class="result-value">' + resource.minorRule + '</span></div>';
-                if (resource.baRule) content += '<div class="result-row"><span class="result-label">B.A.:</span> <span class="result-value">' + resource.baRule + '</span></div>';
-                if (resource.bsRule) content += '<div class="result-row"><span class="result-label">B.S.:</span> <span class="result-value">' + resource.bsRule + '</span></div>';
-                if (resource.ilmRule) content += '<div class="result-row"><span class="result-label">ILM:</span> <span class="result-value">' + resource.ilmRule + '</span></div>';
-                if (resource.divisions) content += '<div class="result-row"><span class="result-label">Divisions:</span> <span class="result-value">' + resource.divisions + '</span></div>';
-                if (resource.maximum) content += '<div class="result-row"><span class="result-label">Maximum:</span> <span class="result-value">' + resource.maximum + '</span></div>';
-                if (resource.preHealth) content += '<div class="result-row"><span class="result-label">Pre-Health Note:</span> <span class="result-value">' + resource.preHealth + '</span></div>';
-            } else if (resource.type === 'plan') {
-                if (resource.year1) content += '<div class="result-row"><span class="result-label">Year 1:</span> <span class="result-value">' + resource.year1 + '</span></div>';
-                if (resource.year2) content += '<div class="result-row"><span class="result-label">Year 2:</span> <span class="result-value">' + resource.year2 + '</span></div>';
-                if (resource.year3) content += '<div class="result-row"><span class="result-label">Year 3:</span> <span class="result-value">' + resource.year3 + '</span></div>';
-                if (resource.year4) content += '<div class="result-row"><span class="result-label">Year 4:</span> <span class="result-value">' + resource.year4 + '</span></div>';
-                if (resource.credits) content += '<div class="result-row"><span class="result-label">Total Credits:</span> <span class="result-value">' + resource.credits + '</span></div>';
-                if (resource.keyNotes) content += '<div class="result-row"><span class="result-label">Key Notes:</span> <span class="result-value">' + resource.keyNotes + '</span></div>';
-           } else if (resource.type === 'career-resource') {
+    if (resource.requirement) content += '<div class="result-row"><span class="result-label">Requirement:</span> <span class="result-value">' + resource.requirement + '</span></div>';
+    if (resource.details) content += '<div class="result-row"><span class="result-label">Details:</span> <span class="result-value">' + resource.details + '</span></div>';
+    if (resource.courses) content += '<div class="result-row"><span class="result-label">Courses:</span> <span class="result-value">' + resource.courses + '</span></div>';
+    if (resource.languages) content += '<div class="result-row"><span class="result-label">Languages:</span> <span class="result-value">' + resource.languages + '</span></div>';
+    if (resource.firstCourse) content += '<div class="result-row"><span class="result-label">First Course Options:</span> <span class="result-value">' + resource.firstCourse + '</span></div>';
+    if (resource.secondCourse) content += '<div class="result-row"><span class="result-label">Second Course Options:</span> <span class="result-value">' + resource.secondCourse + '</span></div>';
+    if (resource.departments) content += '<div class="result-row"><span class="result-label">Departments:</span> <span class="result-value">' + resource.departments + '</span></div>';
+    if (resource.sequences) content += '<div class="result-row"><span class="result-label">Sequences:</span> <span class="result-value">' + resource.sequences + '</span></div>';
+    if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
+    if (resource.exemptions) content += '<div class="result-row"><span class="result-label">Exemptions:</span> <span class="result-value">' + resource.exemptions + '</span></div>';
+    if (resource.notes) content += '<div class="result-row"><span class="result-label">Notes:</span> <span class="result-value">' + resource.notes + '</span></div>';
+    if (resource.transferNote) content += '<div class="result-row"><span class="result-label">Transfer Note:</span> <span class="result-value">' + resource.transferNote + '</span></div>';
+    if (resource.overlap) content += '<div class="result-row"><span class="result-label">Overlap:</span> <span class="result-value">' + resource.overlap + '</span></div>';
+    if (resource.labNote) content += '<div class="result-row"><span class="result-label">Lab Requirement:</span> <span class="result-value">' + resource.labNote + '</span></div>';
+    if (resource.minorRule) content += '<div class="result-row"><span class="result-label">Minor:</span> <span class="result-value">' + resource.minorRule + '</span></div>';
+    if (resource.baRule) content += '<div class="result-row"><span class="result-label">B.A.:</span> <span class="result-value">' + resource.baRule + '</span></div>';
+    if (resource.bsRule) content += '<div class="result-row"><span class="result-label">B.S.:</span> <span class="result-value">' + resource.bsRule + '</span></div>';
+    if (resource.ilmRule) content += '<div class="result-row"><span class="result-label">ILM:</span> <span class="result-value">' + resource.ilmRule + '</span></div>';
+    if (resource.divisions) content += '<div class="result-row"><span class="result-label">Divisions:</span> <span class="result-value">' + resource.divisions + '</span></div>';
+    if (resource.maximum) content += '<div class="result-row"><span class="result-label">Maximum:</span> <span class="result-value">' + resource.maximum + '</span></div>';
+    if (resource.preHealth) content += '<div class="result-row"><span class="result-label">Pre-Health Note:</span> <span class="result-value">' + resource.preHealth + '</span></div>';
+} else if (resource.type === 'plan') {
+    if (resource.year1) content += '<div class="result-row"><span class="result-label">Year 1:</span> <span class="result-value">' + resource.year1 + '</span></div>';
+    if (resource.year2) content += '<div class="result-row"><span class="result-label">Year 2:</span> <span class="result-value">' + resource.year2 + '</span></div>';
+    if (resource.year3) content += '<div class="result-row"><span class="result-label">Year 3:</span> <span class="result-value">' + resource.year3 + '</span></div>';
+    if (resource.year4) content += '<div class="result-row"><span class="result-label">Year 4:</span> <span class="result-value">' + resource.year4 + '</span></div>';
+    if (resource.credits) content += '<div class="result-row"><span class="result-label">Total Credits:</span> <span class="result-value">' + resource.credits + '</span></div>';
+    if (resource.keyNotes) content += '<div class="result-row"><span class="result-label">Key Notes:</span> <span class="result-value">' + resource.keyNotes + '</span></div>';
+} else if (resource.type === 'career-resource') {
     if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
     
     // PDF EMBED for resources with PDFs
@@ -1677,6 +1677,7 @@ return content;
     </script>
 </body>
 </html>
+
 
 
 
