@@ -1661,24 +1661,26 @@
                 if (resource.employerCommunication) content += '<div class="result-row"><span class="result-label">Employer Communication:</span> <span class="result-value">' + resource.employerCommunication + '</span></div>';
                 if (resource.careerResources) content += '<div class="result-row"><span class="result-label">Career Resources:</span> <span class="result-value">' + resource.careerResources + '</span></div>';
                 if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
-            }
+                }            
             } else if (resource.type === 'pre-health') {
-                if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
-                if (resource.requirements) content += '<div class="result-row"><span class="result-label">Requirements:</span> <span class="result-value">' + resource.requirements + '</span></div>';
-                if (resource.bcpmDefinition) content += '<div class="result-row"><span class="result-label">BCPM Definition:</span> <span class="result-value">' + resource.bcpmDefinition + '</span></div>';
-                if (resource.timing) content += '<div class="result-row"><span class="result-label">Timing:</span> <span class="result-value">' + resource.timing + '</span></div>';
-                if (resource.gpaRequirements) content += '<div class="result-row"><span class="result-label">GPA Requirements:</span> <span class="result-value">' + resource.gpaRequirements + '</span></div>';
-                if (resource.advisorNotes) content += '<div class="result-row"><span class="result-label">Advisor Notes:</span> <span class="result-value">' + resource.advisorNotes + '</span></div>';
-                if (resource.commonQuestions) content += '<div class="result-row"><span class="result-label">Common Questions:</span> <span class="result-value">' + resource.commonQuestions + '</span></div>';
-                if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
-            }
+    if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
+    if (resource.requirements) content += '<div class="result-row"><span class="result-label">Requirements:</span> <span class="result-value">' + resource.requirements + '</span></div>';
+    if (resource.bcpmDefinition) content += '<div class="result-row"><span class="result-label">BCPM Definition:</span> <span class="result-value">' + resource.bcpmDefinition + '</span></div>';
+    if (resource.timing) content += '<div class="result-row"><span class="result-label">Timing:</span> <span class="result-value">' + resource.timing + '</span></div>';
+    if (resource.gpaRequirements) content += '<div class="result-row"><span class="result-label">GPA Requirements:</span> <span class="result-value">' + resource.gpaRequirements + '</span></div>';
+    if (resource.advisorNotes) content += '<div class="result-row"><span class="result-label">Advisor Notes:</span> <span class="result-value">' + resource.advisorNotes + '</span></div>';
+    if (resource.commonQuestions) content += '<div class="result-row"><span class="result-label">Common Questions:</span> <span class="result-value">' + resource.commonQuestions + '</span></div>';
+    if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
+}
 
-            content += '</div></div>';
-            return content;
+content += '</div></div>';
+return content;
+
         }
     </script>
 </body>
 </html>
+
 
 
 
