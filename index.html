@@ -1677,6 +1677,12 @@
     if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
 } else if (resource.type === 'pre-health') {
     if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
+    if (resource.mdData) content += '<div class="result-row"><span class="result-label">MD Programs (2023-2024):</span> <span class="result-value">' + resource.mdData + '</span></div>';
+    if (resource.doData) content += '<div class="result-row"><span class="result-label">DO Programs (2022-2023):</span> <span class="result-value">' + resource.doData + '</span></div>';
+    if (resource.doNote) content += '<div class="result-row"><span class="result-label">Important Note:</span> <span class="result-value">' + resource.doNote + '</span></div>';
+    if (resource.syracuseData) content += '<div class="result-row"><span class="result-label">Syracuse University Applicants:</span> <span class="result-value">' + resource.syracuseData + '</span></div>';
+    if (resource.requiredCourses) content += '<div class="result-row"><span class="result-label">Required Courses:</span> <span class="result-value">' + resource.requiredCourses + '</span></div>';
+    if (resource.experienceExpectations) content += '<div class="result-row"><span class="result-label">Experience Expectations:</span> <span class="result-value">' + resource.experienceExpectations + '</span></div>';
     if (resource.requirements) content += '<div class="result-row"><span class="result-label">Requirements:</span> <span class="result-value">' + resource.requirements + '</span></div>';
     if (resource.bcpmDefinition) content += '<div class="result-row"><span class="result-label">BCPM Definition:</span> <span class="result-value">' + resource.bcpmDefinition + '</span></div>';
     if (resource.timing) content += '<div class="result-row"><span class="result-label">Timing:</span> <span class="result-value">' + resource.timing + '</span></div>';
@@ -1692,6 +1698,7 @@ return content;
     </script>
 </body>
 </html>
+
 
 
 
