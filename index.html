@@ -1625,6 +1625,12 @@
     if (resource.divisions) content += '<div class="result-row"><span class="result-label">Divisions:</span> <span class="result-value">' + resource.divisions + '</span></div>';
     if (resource.maximum) content += '<div class="result-row"><span class="result-label">Maximum:</span> <span class="result-value">' + resource.maximum + '</span></div>';
     if (resource.preHealth) content += '<div class="result-row"><span class="result-label">Pre-Health Note:</span> <span class="result-value">' + resource.preHealth + '</span></div>';
+    if (resource.humanitiesSequences) content += '<div class="result-row"><span class="result-label">Humanities Sequences:</span> <span class="result-value">' + resource.humanitiesSequences + '</span></div>';
+    if (resource.naturalSciencesSequences) content += '<div class="result-row"><span class="result-label">Natural Sciences & Math Sequences:</span> <span class="result-value">' + resource.naturalSciencesSequences + '</span></div>';
+    if (resource.socialSciencesSequences) content += '<div class="result-row"><span class="result-label">Social Sciences Sequences:</span> <span class="result-value">' + resource.socialSciencesSequences + '</span></div>';
+    if (resource.interdepartmentalSequences) content += '<div class="result-row"><span class="result-label">Interdepartmental Sequences:</span> <span class="result-value">' + resource.interdepartmentalSequences + '</span></div>';
+    if (resource.keyNotes) content += '<div class="result-row"><span class="result-label">Key Notes:</span> <span class="result-value">' + resource.keyNotes + '</span></div>';
+    if (resource.advisorTips) content += '<div class="result-row"><span class="result-label">Advisor Tips:</span> <span class="result-value">' + resource.advisorTips + '</span></div>';
 } else if (resource.type === 'plan') {
     if (resource.year1) content += '<div class="result-row"><span class="result-label">Year 1:</span> <span class="result-value">' + resource.year1 + '</span></div>';
     if (resource.year2) content += '<div class="result-row"><span class="result-label">Year 2:</span> <span class="result-value">' + resource.year2 + '</span></div>';
@@ -1728,6 +1734,7 @@ return content;
     </script>
 </body>
 </html>
+
 
 
 
