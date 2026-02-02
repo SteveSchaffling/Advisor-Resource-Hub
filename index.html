@@ -1516,6 +1516,45 @@ resources.push({
     experienceExpectations: 'Students should aim for 1,000+ hours clinical experience, research experience, significant leadership involvement, and community service',
     searchText: 'MD DO medical school osteopathic allopathic acceptance data GPA MCAT statistics requirements syracuse applicants admitted matriculant biology chemistry physics biochemistry calculus clinical research leadership community service pre-med pre-health coursework BIO CHE PHY BCM MAT'
 });
+        // PRE-LAW RESOURCES
+
+resources.push({
+    type: 'pre-law',
+    category: 'Pre-Law Resource',
+    title: 'Law School Application Timeline',
+    description: 'Comprehensive month-by-month timeline for law school applications, starting 18 months before your desired start date. Covers LSAT preparation and testing, CAS registration, campus visits, personal statement development, letters of recommendation, application submission, financial aid, and decision responses.',
+    optimalTiming: 'Submit completed applications between Halloween and Thanksgiving for fall enrollment. Latest recommended submission: First week of January. Law school deadlines (Jan 1 - May 1+) represent when admissions officers review thousands of applications in rolling admission process.',
+    lsatSchedule: '18 months out: Take diagnostic LSAT and register for June test. 14-15 months: Take June LSAT. 9-10 months: September/October LSAT if needed. 8 months: December LSAT if needed.',
+    applicationSteps: '13 months out: Register with CAS, send transcript requests, start personal statement. 11-12 months: Provide official transcripts to CAS, finalize personal statement, collect letters of recommendation. 9-10 months: Complete and submit applications (aim for Halloween-Thanksgiving window).',
+    financialAid: '7 months out: File income taxes and submit FAFSA and school-specific forms. Do NOT wait for admission decisions to file financial aid forms.',
+    decisions: '4-5 months out: Receive decisions (accepted, wait-listed, on hold, denied) and financial aid awards. Submit Intent to Register and seat deposit. Notify declined schools and inform pre-law advisor of results.',
+    notAccepted: '30-40% of applicants are not admitted first time. Alternative plans: pursue graduate degree, internship/job in field, retake LSAT after preparation, revise school list, submit applications earlier in next cycle.',
+    keyResources: 'LSAC (www.lsac.org), American Bar Association (www.americanbar.org), FAFSA (www.fafsa.ed.gov), Syracuse Pre-Law Advising (prelaw@syr.edu)',
+    advisorTips: 'Emphasize early submission advantage in rolling admissions. Help students create realistic school lists. Encourage diagnostic LSAT to gauge preparation needs. Remind about financial aid timing.',
+    url: 'https://artsandsciences.syracuse.edu/student-success/pre-law-advising/law-school-application-timeline/',
+    searchText: 'pre-law application timeline LSAT law school admissions CAS credential assembly service personal statement letters recommendation campus visits financial aid FAFSA rolling admissions deadlines June September October December test schedule gap year seat deposit intent register prelaw advisor'
+});
+
+resources.push({
+    type: 'pre-law',
+    category: 'Pre-Law Resource',
+    title: 'Law School Application Process',
+    description: 'Complete guide to the law school application process including LSAT/GRE testing, Credential Assembly Service registration, transcript submission, letters of recommendation, personal statements, resume development, and financial aid. Details the key components admissions committees evaluate and best practices for each element.',
+    lsatOverview: 'Four-section multiple-choice aptitude exam plus 35-minute unscored writing sample. Sections: Reading Comprehension, Analytical Reasoning, Logical Reasoning, plus one unscored experimental section. Preparation options: commercial test prep services or self-guided study. GRE also accepted but LSAT preferred.',
+    casRegistration: 'Register with LSAC Credential Assembly Service (valid for 5 years). CAS compiles transcripts, letters of recommendation, and LSAT scores into standardized reports sent to law schools. Essential for application process.',
+    transcripts: 'Request official transcripts from all institutions attended. Submit to LSAC for CAS processing. Review Master Law School Report for accuracy before applications go out.',
+    lettersOfRecommendation: 'Cultivate relationships with faculty and supervisors early. Use LSAC Letter of Recommendation service linked to CAS account. Recommenders receive email instructions or can submit hard copy via printed LOR form. Request letters well in advance.',
+    personalStatement: 'Critical component since law schools do not interview. Opportunity to showcase personality, character, motivation, and distinguish yourself from other applicants. Have multiple reviewers provide feedback. Demonstrates fit with specific schools.',
+    resume: 'Include work experiences (legal and otherwise), internships, volunteer experiences, computer and language skills, leadership experiences. Pre-law advisors available to review and provide suggestions.',
+    schoolSelection: 'Apply to ABA-approved law schools (200+ in U.S.). Create school list matching your GPA and LSAT profile, personal preferences, and career goals. Balance reach, target, and safety schools.',
+    gapYear: 'Roughly one-third of law students enter directly from college. Gap years can strengthen qualifications through work experience. Pre-law advisor can help determine best path.',
+    financialAid: 'Contact financial aid offices at each school early. Many schools have early filing deadlines. File FAFSA even before admission decisions.',
+    timing: 'Best to apply between Halloween and Thanksgiving of senior year for fall enrollment. Submit as early as possible in rolling admissions cycle for best consideration.',
+    advisorSupport: 'Pre-law advisors help with course selection, resume review, personal statement feedback, school list development, and overall application strategy. Email prelaw@syr.edu to schedule appointment.',
+    advisorTips: 'Encourage students to cultivate faculty relationships for strong recommendations. Help students understand rolling admissions advantage. Review application components early. Connect students to Mock Trial and legal internships.',
+    url: 'https://artsandsciences.syracuse.edu/student-success/pre-law-advising/applying-law-school/',
+    searchText: 'pre-law application process LSAT GRE credential assembly service CAS LSAC transcripts letters recommendation personal statement resume school selection financial aid gap year ABA approved schools rolling admissions prelaw advisor mock trial legal internships course selection writing sample'
+});
         
         let currentFilter = 'all';
 
@@ -1578,6 +1617,7 @@ resources.push({
             if (resource.type === 'career-resource') badgeClass = 'badge-career-resource';
             if (resource.type === 'international') badgeClass = 'badge-international';
             if (resource.type === 'pre-health') badgeClass = 'badge-pre-health';
+            if (resource.type === 'pre-law') badgeClass = 'badge-pre-law';
             
             let content = '<div class="result-card"><div class="result-header"><div class="result-title">' + resource.title + '</div><span class="result-badge ' + badgeClass + '">' + resource.category + '</span></div><div class="result-content">';
             
@@ -1734,12 +1774,36 @@ resources.push({
     if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
 }
 
+} else if (resource.type === 'pre-law') {
+    if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
+    if (resource.optimalTiming) content += '<div class="result-row"><span class="result-label">Optimal Timing:</span> <span class="result-value">' + resource.optimalTiming + '</span></div>';
+    if (resource.lsatSchedule) content += '<div class="result-row"><span class="result-label">LSAT Schedule:</span> <span class="result-value">' + resource.lsatSchedule + '</span></div>';
+    if (resource.applicationSteps) content += '<div class="result-row"><span class="result-label">Application Steps:</span> <span class="result-value">' + resource.applicationSteps + '</span></div>';
+    if (resource.financialAid) content += '<div class="result-row"><span class="result-label">Financial Aid:</span> <span class="result-value">' + resource.financialAid + '</span></div>';
+    if (resource.decisions) content += '<div class="result-row"><span class="result-label">Decisions:</span> <span class="result-value">' + resource.decisions + '</span></div>';
+    if (resource.notAccepted) content += '<div class="result-row"><span class="result-label">If Not Accepted:</span> <span class="result-value">' + resource.notAccepted + '</span></div>';
+    if (resource.lsatOverview) content += '<div class="result-row"><span class="result-label">LSAT Overview:</span> <span class="result-value">' + resource.lsatOverview + '</span></div>';
+    if (resource.casRegistration) content += '<div class="result-row"><span class="result-label">CAS Registration:</span> <span class="result-value">' + resource.casRegistration + '</span></div>';
+    if (resource.transcripts) content += '<div class="result-row"><span class="result-label">Transcripts:</span> <span class="result-value">' + resource.transcripts + '</span></div>';
+    if (resource.lettersOfRecommendation) content += '<div class="result-row"><span class="result-label">Letters of Recommendation:</span> <span class="result-value">' + resource.lettersOfRecommendation + '</span></div>';
+    if (resource.personalStatement) content += '<div class="result-row"><span class="result-label">Personal Statement:</span> <span class="result-value">' + resource.personalStatement + '</span></div>';
+    if (resource.resume) content += '<div class="result-row"><span class="result-label">Resume:</span> <span class="result-value">' + resource.resume + '</span></div>';
+    if (resource.schoolSelection) content += '<div class="result-row"><span class="result-label">School Selection:</span> <span class="result-value">' + resource.schoolSelection + '</span></div>';
+    if (resource.gapYear) content += '<div class="result-row"><span class="result-label">Gap Year Considerations:</span> <span class="result-value">' + resource.gapYear + '</span></div>';
+    if (resource.timing) content += '<div class="result-row"><span class="result-label">Timing:</span> <span class="result-value">' + resource.timing + '</span></div>';
+    if (resource.advisorSupport) content += '<div class="result-row"><span class="result-label">Advisor Support:</span> <span class="result-value">' + resource.advisorSupport + '</span></div>';
+    if (resource.keyResources) content += '<div class="result-row"><span class="result-label">Key Resources:</span> <span class="result-value">' + resource.keyResources + '</span></div>';
+    if (resource.advisorTips) content += '<div class="result-row"><span class="result-label">Advisor Tips:</span> <span class="result-value">' + resource.advisorTips + '</span></div>';
+    if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
+}
+            
 content += '</div></div>';
 return content;
 }
     </script>
 </body>
 </html>
+
 
 
 
