@@ -1758,7 +1758,7 @@ resources.push({
     if (resource.careerResources) content += '<div class="result-row"><span class="result-label">Career Resources:</span> <span class="result-value">' + resource.careerResources + '</span></div>';
     if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
 }
-} else if (resource.type === 'pre-health') {
+else if (resource.type === 'pre-health') {
     if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
     if (resource.mdData) content += '<div class="result-row"><span class="result-label">MD Programs (2023-2024):</span> <span class="result-value">' + resource.mdData + '</span></div>';
     if (resource.doData) content += '<div class="result-row"><span class="result-label">DO Programs (2022-2023):</span> <span class="result-value">' + resource.doData + '</span></div>';
@@ -1774,8 +1774,7 @@ resources.push({
     if (resource.commonQuestions) content += '<div class="result-row"><span class="result-label">Common Questions:</span> <span class="result-value">' + resource.commonQuestions + '</span></div>';
     if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
 }
-
-} else if (resource.type === 'pre-law') {
+else if (resource.type === 'pre-law') {
     if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
     if (resource.optimalTiming) content += '<div class="result-row"><span class="result-label">Optimal Timing:</span> <span class="result-value">' + resource.optimalTiming + '</span></div>';
     if (resource.lsatSchedule) content += '<div class="result-row"><span class="result-label">LSAT Schedule:</span> <span class="result-value">' + resource.lsatSchedule + '</span></div>';
@@ -1804,6 +1803,7 @@ return content;
     </script>
 </body>
 </html>
+
 
 
 
