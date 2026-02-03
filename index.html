@@ -1757,7 +1757,7 @@ resources.push({
     if (resource.employerCommunication) content += '<div class="result-row"><span class="result-label">Employer Communication:</span> <span class="result-value">' + resource.employerCommunication + '</span></div>';
     if (resource.careerResources) content += '<div class="result-row"><span class="result-label">Career Resources:</span> <span class="result-value">' + resource.careerResources + '</span></div>';
     if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
-}
+} 
 else if (resource.type === 'pre-health') {
     if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
     if (resource.mdData) content += '<div class="result-row"><span class="result-label">MD Programs (2023-2024):</span> <span class="result-value">' + resource.mdData + '</span></div>';
@@ -1803,6 +1803,7 @@ return content;
     </script>
 </body>
 </html>
+
 
 
 
