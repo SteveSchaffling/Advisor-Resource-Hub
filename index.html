@@ -1566,6 +1566,37 @@ resources.push({
     url: 'https://artsandsciences.syracuse.edu/student-success/pre-law-advising/applying-law-school/',
     searchText: 'pre-law application process LSAT GRE credential assembly service CAS LSAC transcripts letters recommendation personal statement resume school selection financial aid gap year ABA approved schools rolling admissions prelaw advisor mock trial legal internships course selection writing sample'
 });
+
+resources.push({
+    type: 'special-populations',
+    category: 'Special Populations',
+    title: '10 Best Practices for Serving First-Generation Students',
+    description: 'Research-based guide from the Council of Independent Colleges providing 10 evidence-based best practices for supporting first-generation college students. Based on experiences from 50 colleges receiving grants from CIC and the Walmart Foundation, this resource covers identification, recruitment, early arrival programs, mentoring, family engagement, financial support strategies, and program assessment methods.',
+    pdfUrl: 'https://github.com/SteveSchaffling/Advisor-Resource-Hub/raw/main/10-Best-Practices-First-Gen-Students.pdf',
+    hasPdf: true,
+    keyTopics: 'Early identification and recruitment, Summer bridge programs, Distinctive student features and needs, Continuing support programs, Mentorship systems (peer/faculty/alumni), Campus-wide commitment and engagement, Community building and non-academic activities, Family involvement strategies, Financial pressure acknowledgment and relief, Success/failure tracking and assessment',
+    bestPractices: '1) Identify and track first-gen students using aid eligibility, 2) Bring students to campus early through summer bridge programs, 3) Focus on distinctive features of first-gen population, 4) Develop variety of programs for continuing needs, 5) Use mentors (students/staff/faculty/alumni/community), 6) Institutionalize campus-wide commitment, 7) Build community and promote engagement, 8) Involve families with realistic expectations, 9) Acknowledge and ease financial pressures, 10) Track successes and failures beyond GPA/retention',
+    advisorUse: 'Framework for developing first-gen support programs, Guide for proactive advising strategies, Resource for identifying campus gaps in first-gen support, Tool for advocating for institutional commitment, Reference for mentor program development',
+    implementation: 'Use aid eligibility to identify first-gen students early, Connect students to summer bridge and orientation programs, Develop relationships with first-gen mentors (especially those who were first-gen themselves), Communicate regularly with families about student transition, Connect students to financial literacy and scholarship resources, Track engagement and success metrics beyond grades',
+    studentBenefits: 'Early campus familiarity and reduced anxiety, Peer connections with similar backgrounds, Access to mentors who understand their experience, Family involvement in college journey, Financial support and literacy, Sense of belonging and community',
+    searchText: 'first generation students first-gen best practices support services retention success council independent colleges walmart foundation summer bridge mentoring family engagement financial aid campus commitment assessment tracking CIC special populations'
+});
+
+resources.push({
+    type: 'special-populations',
+    category: 'Special Populations',
+    title: 'Breaking Down Barriers: First-Generation College Students and College Success',
+    description: 'Comprehensive academic article examining the unique obstacles first-generation college students face and the key factors that contribute to their success. Published in Innovation Showcase (June 2015), this research article provides in-depth analysis of college readiness challenges, financial barriers, racial disparities, and the critical role of college assimilation, family support, and personal characteristics in first-gen student persistence and degree completion.',
+    pdfUrl: 'https://github.com/SteveSchaffling/Advisor-Resource-Hub/raw/main/Breaking-Down-Barriers-First-Gen-Students.pdf',
+    hasPdf: true,
+    keyTopics: 'College readiness gaps and academic preparation, Financial challenges and work-study balance, Racial and ethnic underrepresentation in higher education, Academic self-esteem and belonging, Family support dynamics, High school involvement and preparation programs (TRIO, AVID), College assimilation and social integration, Personal characteristics and self-efficacy, Faculty and staff engagement strategies',
+    obstacles: 'Lack of college readiness from underfunded PreK-12 schools, Lower SAT/ACT scores and less core academic preparation, Unfamiliarity with college application and financial aid processes, Need to work full-time while attending college, Racial disparity in enrollment and graduation rates, Low academic self-esteem and difficulty adjusting to campus, Limited family understanding of college time commitments, Feeling of alienation from college-going peers',
+    successFactors: 'Participation in high school college-readiness programs (TRIO, AVID), Active involvement with supportive peer groups, Connections with school personnel and advisors, College social integration through organizations and work-study, Positive interactions with accessible and motivational faculty, Strong family financial and moral support, Personal characteristics: hard working, goal-oriented, independent, mature, High self-efficacy and belief in academic capability',
+    statistics: 'Only 36% of students whose parents have less than high school diploma enter college immediately after graduation (vs 54% whose parents completed high school), 23% of first-gen students obtain associate degree or certificate, 24% achieve bachelor\'s or higher, Around 40% of Hispanic and African American students graduate with four-year degree vs 55%+ of White and Asian students, Average income for bachelor\'s degree holders: $53,976 with 4.7% unemployment',
+    advisorApproach: 'Identify first-gen students early and proactively reach out, Connect students to TRIO programs, summer bridge, and readiness resources, Help students develop academic confidence through early wins, Facilitate connections with faculty and peer mentors, Educate families about college time commitments and expectations, Address financial literacy and connect to aid resources, Recognize and validate cultural backgrounds and experiences, Monitor social integration and sense of belonging, Encourage participation in campus organizations and work-study',
+    researchBased: 'Extensive citations from peer-reviewed journals, References from ASHE Higher Education Report, National Center for Education Statistics studies, College Board research on SAT/ACT preparation gaps, Multiple studies on retention and persistence factors',
+    searchText: 'first generation students first-gen college readiness barriers obstacles success factors research academic article TRIO AVID college assimilation family support self-efficacy retention graduation rates racial disparity financial challenges social integration special populations innovation showcase'
+});
         
         let currentFilter = 'all';
 
@@ -1629,6 +1660,7 @@ resources.push({
             if (resource.type === 'international') badgeClass = 'badge-international';
             if (resource.type === 'pre-health') badgeClass = 'badge-pre-health';
             if (resource.type === 'pre-law') badgeClass = 'badge-pre-law';
+            if (resource.type === 'special-populations') badgeClass = 'badge-special-populations';
             
             let content = '<div class="result-card"><div class="result-header"><div class="result-title">' + resource.title + '</div><span class="result-badge ' + badgeClass + '">' + resource.category + '</span></div><div class="result-content">';
             
@@ -1807,6 +1839,33 @@ else if (resource.type === 'pre-law') {
     if (resource.advisorTips) content += '<div class="result-row"><span class="result-label">Advisor Tips:</span> <span class="result-value">' + resource.advisorTips + '</span></div>';
     if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
 }
+else if (resource.type === 'special-populations') {
+    if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
+    
+    // PDF EMBED for special populations resources with PDFs
+    if (resource.hasPdf && resource.pdfUrl) {
+        content += '<div class="result-row" style="margin-top: 1.5rem;">';
+        content += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">';
+        content += '<span class="result-label">Document Preview:</span>';
+        content += '<a href="' + resource.pdfUrl + '" download class="result-link" style="margin: 0; font-size: 0.875rem;">Download PDF ↓</a>';
+        content += '</div>';
+        content += '<iframe src="https://docs.google.com/viewer?url=' + encodeURIComponent(resource.pdfUrl) + '&embedded=true" width="100%" height="600px" style="border: 1px solid #d1d5db; border-radius: 8px;"></iframe>';
+        content += '</div>';
+    }
+    
+    // Show other fields
+    if (resource.keyTopics) content += '<div class="result-row"><span class="result-label">Key Topics:</span> <span class="result-value">' + resource.keyTopics + '</span></div>';
+    if (resource.bestPractices) content += '<div class="result-row"><span class="result-label">Best Practices:</span> <span class="result-value">' + resource.bestPractices + '</span></div>';
+    if (resource.obstacles) content += '<div class="result-row"><span class="result-label">Obstacles:</span> <span class="result-value">' + resource.obstacles + '</span></div>';
+    if (resource.successFactors) content += '<div class="result-row"><span class="result-label">Success Factors:</span> <span class="result-value">' + resource.successFactors + '</span></div>';
+    if (resource.statistics) content += '<div class="result-row"><span class="result-label">Statistics:</span> <span class="result-value">' + resource.statistics + '</span></div>';
+    if (resource.advisorUse) content += '<div class="result-row"><span class="result-label">Advisor Use:</span> <span class="result-value">' + resource.advisorUse + '</span></div>';
+    if (resource.implementation) content += '<div class="result-row"><span class="result-label">Implementation:</span> <span class="result-value">' + resource.implementation + '</span></div>';
+    if (resource.studentBenefits) content += '<div class="result-row"><span class="result-label">Student Benefits:</span> <span class="result-value">' + resource.studentBenefits + '</span></div>';
+    if (resource.advisorApproach) content += '<div class="result-row"><span class="result-label">Advisor Approach:</span> <span class="result-value">' + resource.advisorApproach + '</span></div>';
+    if (resource.researchBased) content += '<div class="result-row"><span class="result-label">Research Based:</span> <span class="result-value">' + resource.researchBased + '</span></div>';
+    if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
+}
             
 content += '</div></div>';
 return content;
@@ -1814,6 +1873,7 @@ return content;
     </script>
 </body>
 </html>
+
 
 
 
