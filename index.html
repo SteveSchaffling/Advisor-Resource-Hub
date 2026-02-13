@@ -1915,6 +1915,19 @@ else if (resource.type === 'special-populations') {
     if (resource.researchBased) content += '<div class="result-row"><span class="result-label">Research Based:</span> <span class="result-value">' + resource.researchBased + '</span></div>';
     if (resource.url) content += '<a href="' + resource.url + '" target="_blank" class="result-link">Learn More →</a>';
 }
+            else if (resource.type === 'external-transfer') {
+    if (resource.description) content += '<div class="result-row"><span class="result-label">Description:</span> <span class="result-value">' + resource.description + '</span></div>';
+    if (resource.checkingCredits) content += '<div class="result-row"><span class="result-label">Checking Credits:</span> <span class="result-value">' + resource.checkingCredits + '</span></div>';
+    if (resource.eligibility) content += '<div class="result-row"><span class="result-label">Eligibility:</span> <span class="result-value">' + resource.eligibility + '</span></div>';
+    if (resource.creditLimit) content += '<div class="result-row"><span class="result-label">Credit Limit:</span> <span class="result-value">' + resource.creditLimit + '</span></div>';
+    if (resource.editingRequired) content += '<div class="result-row"><span class="result-label">Editing Required:</span> <span class="result-value">' + resource.editingRequired + '</span></div>';
+    if (resource.documentRequired) content += '<div class="result-row"><span class="result-label">Document Required:</span> <span class="result-value">' + resource.documentRequired + '</span></div>';
+    if (resource.studentAction) content += '<div class="result-row"><span class="result-label">Student Action:</span> <span class="result-value">' + resource.studentAction + '</span></div>';
+    if (resource.complexity) content += '<div class="result-row"><span class="result-label">Complexity:</span> <span class="result-value">' + resource.complexity + '</span></div>';
+    if (resource.referral) content += '<div class="result-row"><span class="result-label">Referral:</span> <span class="result-value">' + resource.referral + '</span></div>';
+    if (resource.courseCatalogUrl) content += '<div class="result-row"><a href="' + resource.courseCatalogUrl + '" target="_blank" class="result-link">View Course Catalog Academic Rules →</a></div>';
+    if (resource.advisorNotes) content += '<div class="result-row"><span class="result-label">Advisor Notes:</span> <span class="result-value">' + resource.advisorNotes + '</span></div>';
+}
             
 content += '</div></div>';
 return content;
@@ -1922,6 +1935,7 @@ return content;
     </script>
 </body>
 </html>
+
 
 
 
