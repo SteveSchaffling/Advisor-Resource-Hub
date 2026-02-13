@@ -1603,6 +1603,48 @@ resources.push({
     researchBased: 'Extensive citations from peer-reviewed journals, References from ASHE Higher Education Report, National Center for Education Statistics studies, College Board research on SAT/ACT preparation gaps, Multiple studies on retention and persistence factors',
     searchText: 'first generation students first-gen college readiness barriers obstacles success factors research academic article TRIO AVID college assimilation family support self-efficacy retention graduation rates racial disparity financial challenges social integration special populations innovation showcase'
 });
+        resources.push({
+    type: 'external-transfer',
+    category: 'External & Transfer Credit',
+    title: 'AP Credit Processing',
+    description: 'Process for checking, receiving, and awarding Advanced Placement (AP) credit for students. AP scores must be sent directly from College Board and can take several days to weeks to be delivered.',
+    checkingCredits: 'Go to Course Credits Automated in student system, Enter student\'s matric term and program, Hit fetch to see if scores received, System automatically populates all possible credits',
+    creditLimit: 'Maximum 30 credits total from all extra-institutional sources',
+    editingRequired: 'May need to edit down to 30 credit maximum, Refer to Course Catalog AP table when multiple course options exist (especially Math courses)',
+    studentAction: 'Students must have College Board send official scores, Cannot use high school transcript, Delivery takes several days to several weeks',
+    courseCatalogUrl: 'https://coursecatalog.syracuse.edu/undergraduate/academic-rules/',
+    advisorNotes: 'Always verify against Course Catalog AP table for correct credit awards, Common issues with Math course equivalencies requiring manual selection, Pre-health students should consult advisor before accepting AP Bio/Chem/Math credits',
+    searchText: 'AP credit advanced placement college board course credits automated matric term program fetch 30 credit maximum course catalog high school transcript delivery math equivalencies pre-health biology chemistry'
+});
+
+resources.push({
+    type: 'external-transfer',
+    category: 'External & Transfer Credit',
+    title: 'IB Credit Processing',
+    description: 'Process for awarding International Baccalaureate (IB) credit. Syracuse University only awards credit for Higher Level (HL) exams with scores of 5 or higher.',
+    checkingCredits: 'Check OnBase for IB diploma: RO UG International Baccalaureate Transcript folder',
+    eligibility: 'Only Higher Level (HL) exams eligible, Minimum score of 5 required for credit',
+    documentRequired: 'Must have official IB diploma, Cannot use high school transcript to award credit',
+    studentAction: 'Students must have College Board send official scores, Delivery takes several days to several weeks',
+    courseCatalogUrl: 'https://coursecatalog.syracuse.edu/undergraduate/academic-rules/',
+    advisorNotes: 'Verify HL exam scores of 5+ only, Check OnBase before awarding credit, Refer to Course Catalog for specific exam credit equivalencies',
+    searchText: 'IB credit international baccalaureate higher level HL exams score 5 college board onbase diploma RO UG transcript course catalog delivery'
+});
+
+resources.push({
+    type: 'external-transfer',
+    category: 'External & Transfer Credit',
+    title: 'A-Level Credit Processing',
+    description: 'Process for awarding A-Level credit. A-Levels are complex and require official certificates from testing bodies (Pearson, EdExcel, or Cambridge). Contact Assistant Director of Transfer Services for assistance.',
+    checkingCredits: 'Check OnBase for A-Level Transcript',
+    documentRequired: 'Must have official certificate from Pearson, EdExcel, or Cambridge (equivalent to College Board), Cannot use high school transcript to award credit',
+    studentAction: 'Students must have testing agency send official scores, Delivery can take MONTHS',
+    complexity: 'A-Levels are complex - always contact Assistant Director of Transfer Services when dealing with A-Level credit',
+    courseCatalogUrl: 'https://coursecatalog.syracuse.edu/undergraduate/academic-rules/',
+    advisorNotes: 'DO NOT process A-Levels alone - contact Assistant Director of Transfer Services, Delivery timeline much longer than AP/IB (months vs weeks), Verify testing body is Pearson, EdExcel, or Cambridge',
+    referral: 'Always refer to Assistant Director of Transfer Services for A-Level processing',
+    searchText: 'A-level credit UK british certificate pearson edexcel cambridge testing body onbase transcript course catalog assistant director transfer services months delivery complex'
+});
         
         let currentFilter = 'all';
 
@@ -1880,6 +1922,7 @@ return content;
     </script>
 </body>
 </html>
+
 
 
 
