@@ -211,6 +211,11 @@
             background-color: #fee2e2;
             color: #dc2626;
         }
+
+        .badge-external-transfer {
+    background-color: #fef3c7;
+    color: #92400e;
+}
       
         .result-content {
             font-size: 0.875rem;
@@ -1662,6 +1667,7 @@ resources.push({
             if (resource.type === 'pre-health') badgeClass = 'badge-pre-health';
             if (resource.type === 'pre-law') badgeClass = 'badge-pre-law';
             if (resource.type === 'special-populations') badgeClass = 'badge-special-populations';
+            if (resource.type === 'external-transfer') badgeClass = 'badge-external-transfer';
             
             let content = '<div class="result-card"><div class="result-header"><div class="result-title">' + resource.title + '</div><span class="result-badge ' + badgeClass + '">' + resource.category + '</span></div><div class="result-content">';
             
@@ -1874,6 +1880,7 @@ return content;
     </script>
 </body>
 </html>
+
 
 
 
